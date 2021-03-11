@@ -1,0 +1,28 @@
+<!DOCTYPE html> {% load static %}
+
+<head>
+    <title>FRINEX BI</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static '/dancas/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/dancas/css/style.css' %}">
+    <script src="{% static '/dancas/js/jquery.js' %}"></script>
+    <script src="{% static '/dancas/js/googlecharts.js' %}"></script>
+    <script src="{% static '/dancas/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body class="text-center bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="float-left text-danger">DANCAS</h1>
+        <div style="margin-left:30px;">
+            <a>
+                <button class="btn btn-info mb-2">INICIO</button>
+            </a>
+
+        </div>
+    </nav>
+    <!-- inicio corpo real do site -->
+    <div class="col-12 float-left border border-info rounded" style="min-height: 580px">
+        {% block content %} {% endblock %}
+    </div>
+    <!-- fim da div corpo real do site -->
+</body>
