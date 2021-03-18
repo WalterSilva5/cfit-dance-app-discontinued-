@@ -1,0 +1,41 @@
+{% extends 'painel/painel.html' %} {% block painel %}
+
+<!--painel cadastrar treino-->
+<div
+  class="container col-12 rounded border border-success"
+  style="min-height: 600px"
+>
+  <!--form cadastro exercicio-->
+  <div class="border border-warning rounded">
+    <form>
+      <input
+        type="text"
+        name="nome"
+        class="form-control"
+        placeholder="nome do exercicio"
+      />
+      <!--conjunto muscular-->
+      <label for="musculos" class="text-warning">CONJ MUSCULAR</label>
+      <select name="musculos" id="musculos">
+        <option value="COXAS">COXAS</option>
+        <option value="TRICEPS">TRICEPS</option>
+        <option value="BICEPS">BICEPS</option>
+        <option value="PANTURRILHA">PANTURRILHA</option>
+      </select>
+      <!--fim conjunto muscular-->
+      <!--aparelho-->
+      <label for="aparelho" class="text-warning">APARELHO</label>
+      <select name="aparelho" id="aparelho">
+        <option value="LIVRE">LIVRE</option>
+        <option value="BANCO">BANCO</option>
+        <option value="HALTER">HALTER</option>
+        <option value="PANTURRILHA">PANTURRILHA</option>
+      </select>
+      <!--fim aparelho-->
+    </form>
+  </div>
+  <!--fim form cadastro exercicio-->
+
+  <!--fim painel cadastrar treino-->
+</div>
+{% endblock %}
