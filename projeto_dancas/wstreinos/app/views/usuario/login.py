@@ -14,17 +14,16 @@ def login(request):
 def efetuar_login(request):
     login = request.POST['login']
     senha = request.POST['senha']
-    if usuario_cadastrado(login):
-        request.session["login"]=login
-        request.session["senha"]=senha
-        request.session.set_expiry(0)
-        return render(request, 'usuario/usuario.html', {'mensagem': login})
+    usuario = usuario_cadastrado(login)
+    if usuario:
+        request.session["professor"] = usuario.values()[0]["professor"]
+        request.session["login"] = login
+        return render(request, 'index.html', {'mensagem': login})
     else:
         return render(request, 'usuario/login.html', {'mensagem': 'erro'})
 
 def usuario_cadastrado(user):
     usuario = Usuario.objects.filter(login=user)
-    print(usuario)
     return usuario
     
 def sair(request):

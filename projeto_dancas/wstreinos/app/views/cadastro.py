@@ -6,7 +6,7 @@ from ..tests import usuario_logado
 
 def cadastro(request):
     if usuario_logado(request):
-        return render(request, 'aluno/aluno.html')
+        return render(request, 'usuario/usuario.html')
     else:
         return render(request, 'cadastro.html')
 
