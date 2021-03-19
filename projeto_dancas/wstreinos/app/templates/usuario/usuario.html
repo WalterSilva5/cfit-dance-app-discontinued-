@@ -19,14 +19,13 @@
                 </button>
                 <button class="btn btn-success bt-painel ws-bt-painel font-weight-bold">
                     MINHAS INFORMAÇÕES
-                </button>
+                </button> {% autoescape off %} {{botoes_admin}} {% endautoescape %}
                 <form class="col-12 d-flex justify-content-center" action="{% url 'sair' %}" method="POST" autocomplete="off">
                     {% csrf_token %}
                     <button class="btn btn-danger ws-bt-painel" type="submit">
                         SAIR
                     </button>
                 </form>
-                {% autoescape off %} {{botoes_admin}} {% endautoescape %}
             </div>
             <div class="container rounded border border-danger col-9 float-left" style="min-height: 600px">
                 {% block painel %} {% endblock %}

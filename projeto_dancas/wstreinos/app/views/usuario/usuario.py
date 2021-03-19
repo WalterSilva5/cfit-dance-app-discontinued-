@@ -6,8 +6,7 @@ from app.tests import usuario_logado
 def usuario(request):
     if usuario_logado(request):
         botoes_admin = """
-        <a class="btn btn-success bt-painel ws-bt-painel font-weight-bold" href="{% url 'cadastro'%}">TESTE 1</a>
-        <a class="btn btn-success bt-painel ws-bt-painel font-weight-bold" href="{% url 'cadastro'%}">TESTE 2</a>
+        <a class="btn btn-info bt-painel ws-bt-painel font-weight-bold" href="/cadastro">GERENCIAR CURSOS</a>
         """
         print(request.session["professor"])
 
