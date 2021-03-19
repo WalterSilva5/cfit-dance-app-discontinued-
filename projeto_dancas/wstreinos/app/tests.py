@@ -11,5 +11,17 @@ def usuario_logado(request):
         else:
             return True
     except:
+
+        return False
+
+
+def professor_logado(request):
+    try:
+        professor = request.session["professor"]
+        if request.session["professor"] == "" or request.session["professor"] == None:
+            return False
+        else:
+            return True
+    except:
         
         return False

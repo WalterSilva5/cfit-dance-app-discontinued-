@@ -1,3 +1,13 @@
-{% extends 'main.html' %} {% block content %}
-<h1 class="text-center font-weight-bold text-warning">INICIO</h1>
+{% extends 'main.html' %} {% block content %} {% load static%}
+<link rel="stylesheet" href="{% static 'app/css/index.css' %}">
+<div class="banner col-12">
+    <img class="img-fluid col-12" src="{% static 'app/img/banner.png' %}" alt="">
+    <div class="texto_do_banner col-5" style="min-height:500px;">
+        <p class="h1 text-warning font-weight-bold">FAÇA JA A SUA INSCRIÇÃO</p>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-nd3FMcqAdg?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>></iframe>
+        </div>
+        <button class="btn btn-danger rounded btn-lg">INSCREVA-SE</button>
+    </div>
+</div>
 {% endblock %}

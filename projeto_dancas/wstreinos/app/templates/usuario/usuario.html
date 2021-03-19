@@ -1,0 +1,39 @@
+{% extends 'main.html' %} {% block content %}
+<div class="container col-12 d-flex justify-content-center">
+    <div class="ws-box col-12" style="min-height: 600px; margin-top: 50px; width: 100vh">
+        <!--painel-->
+        <br />
+        <h1 class="text-center text-warning font-weight-bold">PAINEL</h1>
+        <div class="container col-12 float-left">
+            <p class="text-danger text-center font-weight-bold">{{mensagem}}</p>
+            <!--menu-->
+            <div class="bg-dark col-3 rounded text-center float-left border border-danger" style="min-height: 300px">
+                <button class="btn btn-outline-warning bt-painel ws-bt-painel font-weight-bold">
+          MEUS TREINOS
+        </button>
+                <button class="btn btn-outline-warning bt-painel ws-bt-painel font-weight-bold">
+          CADASTRAR TREINO
+        </button>
+                <button class="btn btn-outline-warning bt-painel ws-bt-painel font-weight-bold">
+          CADASTRAR APARELHO
+        </button>
+                <button class="btn btn-success bt-painel ws-bt-painel font-weight-bold">
+          MINHAS INFORMAÇÕES
+        </button>
+                <form class="col-12 d-flex justify-content-center" action="{% url 'sair' %}" method="POST" autocomplete="off">
+                    {% csrf_token %}<button class="btn btn-danger ws-bt-painel" type="submit">
+            SAIR
+          </button>
+                </form>
+            </div>
+            <div class="container rounded border border-danger col-9 float-left" style="min-height: 600px">
+                {% block painel %} {% endblock %}
+            </div>
+        </div>
+        <!--fim menu-->
+
+        <!-- FIM painel-->
+        <br />
+    </div>
+</div>
+{% endblock %}

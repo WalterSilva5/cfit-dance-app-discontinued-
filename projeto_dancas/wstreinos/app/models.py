@@ -4,7 +4,8 @@ from django.db import models
 class Usuario(models.Model):
     login = models.CharField('login', max_length=100, null=False, blank=False, unique=True)
     senha = models.CharField('senha', max_length=100, null=False, blank=False)
-    
+    bloqueado = models.BooleanField('bloqueado', default=False)
+
 class Aparelho(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)
     dica = models.CharField('dica', max_length=255, null=True, default='')
