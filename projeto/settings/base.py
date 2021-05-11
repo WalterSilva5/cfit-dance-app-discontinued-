@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'yp(o4w-1*s-*@yta4yl+c@w(mjf=gs^%nul-jlvb(21_h!2b%r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -122,48 +121,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-
-LOGGING = {
-'version': 1,
-'disable_existing_loggers': False,
-'formatters': {
-    'verbose': {
-        'format': ('%(asctime)s [%(process)d] [%(levelname)s] '
-                   'pathname=%(pathname)s lineno=%(lineno)s '
-                   'funcname=%(funcName)s %(message)s'),
-        'datefmt': '%Y-%m-%d %H:%M:%S'
-    },
-    'simple': {
-        'format': '%(levelname)s %(message)s'
-    }
-},
-'handlers': {
-    'null': {
-        'level': 'DEBUG',
-        'class': 'logging.NullHandler',
-    },
-    'console': {
-        'level': 'INFO',
-        'class': 'logging.StreamHandler',
-        'formatter': 'verbose'
-    }
-},
-'loggers': {
-    'django': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-        'propagate': True,
-    },
-    'django.request': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-        'propagate': False,
-    },
-}}
-django_heroku.settings(config=locals(), staticfiles=False,logging=False)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
