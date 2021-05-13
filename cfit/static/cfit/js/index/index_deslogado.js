@@ -1,4 +1,4 @@
-console.log(Vue);
-const login = Vue.createApp({
-    template: ``,
-}).mount("#login");
+import comps from "../componentes/componentes.js";
+const login = Vue.createApp({})
+login.component('botao', comps.CfitBotao)
+login.mount("#login");

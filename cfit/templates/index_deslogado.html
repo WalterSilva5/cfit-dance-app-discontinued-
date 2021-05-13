@@ -29,44 +29,44 @@
             </div>
             <div class="col-5"></div>
             <div id="login">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
-                    LOGIN
-                </button>
-
-                <!-- modal login -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title text-dark" id="exampleModalLongTitle">
-                                    ENTRAR
-                                </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div>
-                                    <form id="form-login" autocomplete="off" class="text-center">
-                                        <input type="text" class="form-control text-center" placeholder="USUARIO">
-                                        <input type="password" class="form-control my-3 text-center" placeholder="SENHA">
-                                    </form>
-                                </div>
-                                <div class="text-center"> <button type="button" class="btn btn-primary">
-                                        ENTRAR
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end modal login -->
-
+                <botao dt_toggle="modal" dt_target="#exampleModalCenter">BOTAO DE TESTE</botao>
             </div>
         </div>
     </nav>
 </div>
+
+
+
+
+
+<!-- modal login -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-dark" id="exampleModalLongTitle">
+                    ENTRAR
+                </h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form id="form-login" autocomplete="off" class="text-center">
+                        <input type="text" class="form-control text-center" placeholder="USUARIO">
+                        <input type="password" class="form-control my-3 text-center" placeholder="SENHA">
+                    </form>
+                </div>
+                <div class="text-center"> <button type="button" class="btn btn-primary">
+                        ENTRAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal login -->
 <!-- end navbar -->
-<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
+<script type="module" src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 {% endblock %}
