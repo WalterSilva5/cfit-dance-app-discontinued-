@@ -5,64 +5,69 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand col-2" href="/">
+        <a class="navbar-brand col-sm-2" href="/">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mx-auto">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold hvr-ripple-in btn mx-1 w3-orange my-2" href="#">AULAS</a>
+                    <li class="nav-item mx-1">
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#">AULAS</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold hvr-ripple-in btn mx-1 w3-orange my-2" href="#planos">PLANOS</a>
+                    <li class="nav-item mx-1">
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#planos ">PLANOS</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold hvr-ripple-in btn mx-1 w3-orange my-2" href="#modalidades">MODALIDADES</a>
+                    <li class="nav-item mx-1">
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#modalidades">MODALIDADES</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold hvr-ripple-in btn mx-1 w3-orange my-2" href="#contatos">CONTATOS</a>
+                    <li class="nav-item mx-1">
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2 " href="#contatos ">CONTATOS</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" data-target="#modal_cadastro" data-toggle="modal">CADASTRE-SE</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-5"></div>
         </div>
+        <div class="col-2"></div>
         <div>
-            <cfit-button data-toggle="modal" data-target="#modal_teste" class="w3-orange mx-1">
-                <div class="row d-flex justify-content-center">
-                    <span style="font-size: 30px;" class="material-icons">
-                    account_circle
-                    </span>
-                </div>
-                <div class="row">
-                    LOGIN
-                </div>
-            </cfit-button>
-            <cfit-modal id="modal_teste" class="text-center">
+            <div class="col-sm-12  px-auto">
+                <cfit-button data-toggle="modal" id="botao_login" data-target="#modal_login" class="w3-orange col-sm-12 px-auto">
+                    <div class="row d-flex justify-content-center px-5 text-center">
+                        <span style="font-size: 30px;" class="material-icons">
+                        account_circle
+                        </span>
+                    </div>
+                    <div>
+                        LOGIN
+                    </div>
+                </cfit-button>
+            </div>
+            <!-- modal login -->
+            <cfit-modal id="modal_login" class="text-center">
                 <template v-slot:modal_header>
                     CFIT LOGIN
                 </template>
                 <template v-slot:modal_body>
                     <div>
-                        <form id="form-login">
-                            <label for="usuario" class="p-0 float-left">Usuario <span class="text-danger">*</span></label>
-                            <input class="form-control" name="usuario" id="usuario" type="text">
+                        <form id="form-login" autocomplete="off">
+                            <label for="usuario_login" class="p-0 float-left">Usuario <span class="text-danger">*</span></label>
+                            <input class="form-control" name="usuario_login" id="usuario_login" type="text">
                             <div class="my-2">
-                                <label for="senha" class="p-0 float-left">Senha <span class="text-danger">*</span></label>
-                                <input class="form-control" name="senha" id="senha" type="password">
+                                <label for="senha_login" class="p-0 float-left">Senha <span class="text-danger">*</span></label>
+                                <input class="form-control" name="senha_login" id="senha_login" type="password">
                             </div>
-                            <div class="alert alert-danger my-2" hidden role="alert">
-                                {{mensagem}}
+                            <div class="alert alert-danger my-2" id="login_alert" hidden role="alert">
+                                <h3 id="login_alert_msg"></h3>
                             </div>
                         </form>
-                        <cfit-button class="w3-orange mx-1 mt-4">LOGIN</cfit-button>
+                        <cfit-button class="w3-orange mx-1 mt-4" id="btn_login">LOGIN</cfit-button>
                         <div class="mt-3">
                             <div class="col-12 d-flex justify-content-center">
                                 <div>
                                     Não cadastrado?
-                                    <cfit-button class="btn-sm bg-danger text-light">
+                                    <cfit-button class="btn-sm bg-danger text-light" data-target="#modal_cadastro" data-toggle="modal">
                                         CADASTRE-SE
                                     </cfit-button>
                                 </div>
@@ -71,11 +76,34 @@
                     </div>
                 </template>
             </cfit-modal>
+            <!-- end modal login -->
+            <!-- modal cadastro -->
+            <cfit-modal id="modal_cadastro" class="text-center">
+                <template v-slot:modal_header>
+                    CFIT CADASTRO
+                </template>
+                <template v-slot:modal_body>
+                    <div>
+                        <form id="form-cadastro" autocomplete="off">
+                            <label for="usuario_cadastro" class="p-0 float-left">Usuario <span id="usuario_cadastro_invalid" class="text-danger" style="display: none;">* PREENCHA ESSE CAMPO</span></label>
+                            <input class="form-control" name="usuario_cadastro" id="usuario_cadastro" type="text">
+                            <div class="my-2">
+                                <label for="senha_cadastro" class="p-0 float-left">Senha <span id="senha_cadastro_invalid" class="text-danger"  style="display: none;">* PREENCHA ESSE CAMPO</span></label>
+                                <input class="form-control" name="senha_cadastro" id="senha_cadastro" type="password">
+                            </div>
+                            <div class="alert alert-danger my-2" id="alert_cadastro" hidden role="alert">
+                                <h3 id="alert_cadastro_msg"></h3>
+                            </div>
+                        </form>
+                        <cfit-button class="w3-orange mx-1 mt-4" onclick="cadastrar_usuario()">CADASTRAR</cfit-button>
+                    </div>
+                </template>
+            </cfit-modal>
+            <!-- end modal cadastro -->
         </div>
     </nav>
-
 </div>
+<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 <!-- end modal login -->
 <!-- end navbar -->
-<script type="module" src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 {% endblock %}
