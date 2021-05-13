@@ -2,26 +2,24 @@
 <!-- navbar -->
 <div>
     <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color: black">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand col-2" href="/">
-            <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo">
+            <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mx-auto">
-                <ul class="navbar-nav mr-auto ">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold text-light hvr-ripple-in " href="#">AULAS</a>
+                        <a class="nav-link font-weight-bold text-light hvr-ripple-in" href="#">AULAS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold text-light hvr-ripple-in" href="#planos">PLANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold text-light hvr-ripple-in"
-                            href="#modalidades">MODALIDADES</a>
+                        <a class="nav-link font-weight-bold text-light hvr-ripple-in" href="#modalidades">MODALIDADES</a>
                     </li>
 
                     <li class="nav-item">
@@ -30,137 +28,45 @@
                 </ul>
             </div>
             <div class="col-5"></div>
-            <div id="social">
-                <div class="hvr-shutter-out-vertical btn btn-outline-light col-6 container text-center justify-content-center float-right" style="background-color: black;">
-                    <img class="img-fluid col-8" src="{% static 'cfit/img/icons/user.png' %}" alt="">
-                    <p class="p font-weight-bold mb-0">LOGIN</p>
+            <div id="login">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
+                    LOGIN
+                </button>
+
+                <!-- modal login -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title text-dark" id="exampleModalLongTitle">
+                                    ENTRAR
+                                </h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <form id="form-login" autocomplete="off" class="text-center">
+                                        <input type="text" class="form-control text-center" placeholder="USUARIO">
+                                        <input type="password" class="form-control my-3 text-center" placeholder="SENHA">
+                                    </form>
+                                </div>
+                                <div class="text-center"> <button type="button" class="btn btn-primary">
+                                        ENTRAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- end modal login -->
+
             </div>
         </div>
     </nav>
 </div>
 <!-- end navbar -->
-<div class="row container col-12">
-    <div class="col-7" style="padding-right:-50;">
-        <img class="img-fluid" src="{% static 'cfit/img/banner.jpg' %}" alt="">
-    </div>
-    <div class="m-0 embed-responsive embed-responsive-16by9 col-5">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-nd3FMcqAdg"></iframe>
-    </div>
-</div>
-
-<div class="text-center" id="planos">
-    <h1 class="text-light">PLANOS</h1>
-    <div class="row container col-12 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="text-center" id="modalidades">
-    <h1 class="text-light">MODALIDADES</h1>
-    <div class="row container col-12 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="text-center" id="contatos">
-    <h1 class="text-light">CONTATOS</h1>
-    <div class="row container col-12 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-</div>
+<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 {% endblock %}
