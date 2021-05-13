@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static 'cfit/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'cfit/css/animate.min.css'%}" />
     <link rel="stylesheet" href="{% static 'cfit/css/hover-min.css'%}" />
+    <link rel="stylesheet" href="{% static 'cfit/css/w3.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- SCRIPTS -->
 
     <script src="{% static 'cfit/js/jquery.js'%}"></script>
@@ -18,9 +20,9 @@
     <title>Carvalhos FIT</title>
 </head>
 
-<body>
+<body id="app">
     {% block content%} {% endblock content %}
-    <script href="{% static 'cfit/js/main/main.js'%}"></script>
+    <script type="module" src="{% static 'cfit/js/main/main.js'%}"></script>
 </body>
 
 </html>

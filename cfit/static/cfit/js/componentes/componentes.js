@@ -1,5 +1,7 @@
-import CfitBotao from "./CfitBotao.js";
-const comp = {
-    CfitBotao,
+import CfitButton from "./CfitButton.js";
+import CfitModal from "./CfitModal.js"
+const comps = {
+    CfitButton,
+    CfitModal,
 };
-export default comp;
+export default comps;
