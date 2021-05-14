@@ -1,18 +1,12 @@
-sucesso_cadastro = function () {
-    $("#alert_cadastro").hide();
-    $("#usuario_cadastro_invalid").hide()
-    $("#senha_cadastro_invalid").hide()
-};
-
 erro_cadastro = function (mensagem) {
-    $("#alert_cadastro_msg").text(mensagem);
-    $("#alert_cadastro").removeAttr("hidden");
-    $("#alert_cadastro").show();
+    $("#alert_cadastro_msg").text(mensagem)
+    $("#alert_cadastro").show()
+    $("#cadastro_alert_sucesso").hide()
 };
 
 cadastrar_usuario = function () {
-    usuario_cadastro = $("#usuario_cadastro").val();
-    senha_cadastro = $("#senha_cadastro").val();
+    usuario_cadastro = $("#usuario_cadastro").val()
+    senha_cadastro = $("#senha_cadastro").val()
     if (usuario_cadastro && senha_cadastro) {
         $.ajax({
             type: "post",
@@ -22,15 +16,17 @@ cadastrar_usuario = function () {
                 senha_cadastro,
             },
             success: function (result) {
-                sucesso_cadastro()
+                $("#cadastro_alert_sucesso").show()
+                $("#alert_cadastro").hide()
+                $("#form_cadastro").trigger("reset")
             },
             error: function (result) {
                 console.log(result)
-                erro_cadastro(result.textResult)
+                erro_cadastro(result.statusText)
             },
         });
     } else {
-        erro_cadastro("PREENCHA TODOS OS CAMPOS");
+        erro_cadastro("PREENCHA TODOS OS CAMPOS")
         if (!usuario_cadastro) {
             $("#usuario_cadastro_invalid").show()
         } else {
@@ -47,9 +43,9 @@ cadastrar_usuario = function () {
 //login
 
 erro_login = function (mensagem) {
-    $("#alert_login_msg").text(mensagem);
-    $("#alert_login").removeAttr("hidden");
-    $("#alert_login").show();
+    $("#alert_login_msg").text(mensagem)
+    $("#alert_login").removeAttr("hidden")
+    $("#alert_login").show()
 };
 
 efetuar_login = function () {
@@ -64,16 +60,16 @@ efetuar_login = function () {
                 senha_login,
             },
             success: function (result) {
-                if(result == "ok"){
-                    window.location.replace("/home");
+                if (result == "ok") {
+                    window.location.replace("/home")
                 }
             },
-            error: function(result){
+            error: function (result) {
                 erro_login(result)
                 console.log(result)
             }
         });
-    }else{
+    } else {
         alert("preencha todos os campos!")
     }
 }
