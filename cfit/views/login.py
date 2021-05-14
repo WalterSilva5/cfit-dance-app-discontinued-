@@ -8,7 +8,6 @@ from cfit.sessionTester import not_logged_only
 # Create your views here.
 
 @csrf_exempt
-@not_logged_only
 def efetuar_login(request):
     usuario = request.POST["login_usuario"]
     senha = request.POST["login_senha"]

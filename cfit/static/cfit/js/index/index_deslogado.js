@@ -43,14 +43,16 @@ cadastrar_usuario = function () {
 //#######################################################################//
 
 //login
-erro_login = function (mensagem) {
+login_erro = function (mensagem) {
     $("#login_alert_msg").text(mensagem)
     $("#login_alert").show()
 };
 
 efetuar_login = function () {
     login_usuario = $("#login_usuario").val()
+    if (!login_usuario){$("#login_usuario_invalid").show()}
     login_senha = $("#login_senha").val()
+    if(!login_senha){$("#login_senha_invalid").show()}
     if (login_usuario && login_senha) {
         $.ajax({
             type: "post",
@@ -70,6 +72,6 @@ efetuar_login = function () {
             }
         });
     } else {
-        alert("preencha todos os campos!")
+        login_erro("PREENCHA TODOS OS CAMPOS")
     }
 }
