@@ -1,0 +1,34 @@
+{% extends 'main.html' %} {% block content %} {% load static%}
+<!-- navbar -->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color: black">
+        <a class="navbar-brand col-sm-2" href="/">
+            <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
+        </a>
+        <cfit-button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+            aria-label="Toggle navigation">OPÇÕES
+        </cfit-button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div id="options" class="mx-auto">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item mx-1">
+                        <a href="">
+                            <cfit-button class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2">AULAS
+                            </cfit-button>
+                        </a>
+                        <a href="{% url 'logout'  %}">
+                            <cfit-button class="col-sm-12 w3-button w3-round font-weight-bold w3-red my-2">SAIR
+                            </cfit-button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script src="{% static 'cfit/js/index/index_logado.js' %}"></script>
+
+<h1>LOGADO COM SUCESSO!</h1>
+<!-- end navbar -->
+{% endblock%}

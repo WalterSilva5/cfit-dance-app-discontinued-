@@ -11,12 +11,3 @@ def cadastrar(request):
     usuario = Usuario(usuario=usuario, senha=senha)
     usuario.save()
     return HttpResponse("CADASTRADO")
-
-
-@csrf_exempt
-def verifica_usuario_cadastrado(request):
-    email = request.POST["email"].upper()
-    if usuario_test.verificar_usuario(email, "")=="senha":
-        return HttpResponse("CADASTRADO")
-    else:
-        return HttpResponse("NAO_CADASTRADO")

@@ -2,13 +2,13 @@
 <!-- navbar -->
 <div>
     <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color: black">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <a class="navbar-brand col-sm-2" href="/">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
-
+        <cfit-button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+            aria-label="Toggle navigation">OPÇÕES
+        </cfit-button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mx-auto">
                 <ul class="navbar-nav mr-auto">
@@ -16,16 +16,20 @@
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#">AULAS</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#planos ">PLANOS</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
+                            href="#planos ">PLANOS</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#modalidades">MODALIDADES</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
+                            href="#modalidades">MODALIDADES</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2 " href="#contatos ">CONTATOS</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2 "
+                            href="#contatos ">CONTATOS</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" data-target="#modal_cadastro" data-toggle="modal">CADASTRE-SE</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
+                            data-target="#modal_cadastro" data-toggle="modal">CADASTRE-SE</a>
                     </li>
                 </ul>
             </div>
@@ -33,10 +37,11 @@
         <div class="col-2"></div>
         <div>
             <div class="col-sm-12  px-auto">
-                <cfit-button data-toggle="modal" id="botao_login" data-target="#modal_login" class="w3-orange col-sm-12 px-auto">
+                <cfit-button data-toggle="modal" id="botao_login" data-target="#modal_login"
+                    class="w3-orange col-sm-12 px-auto">
                     <div class="row d-flex justify-content-center px-5 text-center">
                         <span style="font-size: 30px;" class="material-icons">
-                        account_circle
+                            account_circle
                         </span>
                     </div>
                     <div>
@@ -52,22 +57,25 @@
                 <template v-slot:modal_body>
                     <div>
                         <form id="form-login" autocomplete="off">
-                            <label for="usuario_login" class="p-0 float-left">Usuario <span class="text-danger">*</span></label>
+                            <label for="usuario_login" class="p-0 float-left">Usuario <span
+                                    class="text-danger">*</span></label>
                             <input class="form-control" name="usuario_login" id="usuario_login" type="text">
                             <div class="my-2">
-                                <label for="senha_login" class="p-0 float-left">Senha <span class="text-danger">*</span></label>
+                                <label for="senha_login" class="p-0 float-left">Senha <span
+                                        class="text-danger">*</span></label>
                                 <input class="form-control" name="senha_login" id="senha_login" type="password">
                             </div>
                             <div class="alert alert-danger my-2" id="login_alert" hidden role="alert">
                                 <h3 id="login_alert_msg"></h3>
                             </div>
                         </form>
-                        <cfit-button class="w3-orange mx-1 mt-4" id="btn_login">LOGIN</cfit-button>
+                        <cfit-button class="w3-orange mx-1 mt-4 w3-xlarge" onclick="efetuar_login()">LOGIN</cfit-button>
                         <div class="mt-3">
                             <div class="col-12 d-flex justify-content-center">
                                 <div>
                                     Não cadastrado?
-                                    <cfit-button class="btn-sm bg-danger text-light" data-target="#modal_cadastro" data-toggle="modal">
+                                    <cfit-button class="w3-red text-light" data-target="#modal_cadastro"
+                                        data-toggle="modal">
                                         CADASTRE-SE
                                     </cfit-button>
                                 </div>
@@ -85,10 +93,14 @@
                 <template v-slot:modal_body>
                     <div>
                         <form id="form-cadastro" autocomplete="off">
-                            <label for="usuario_cadastro" class="p-0 float-left">Usuario <span id="usuario_cadastro_invalid" class="text-danger" style="display: none;">* PREENCHA ESSE CAMPO</span></label>
+                            <label for="usuario_cadastro" class="p-0 float-left">Usuario <span
+                                    id="usuario_cadastro_invalid" class="text-danger" style="display: none;">* PREENCHA
+                                    ESSE CAMPO</span></label>
                             <input class="form-control" name="usuario_cadastro" id="usuario_cadastro" type="text">
                             <div class="my-2">
-                                <label for="senha_cadastro" class="p-0 float-left">Senha <span id="senha_cadastro_invalid" class="text-danger"  style="display: none;">* PREENCHA ESSE CAMPO</span></label>
+                                <label for="senha_cadastro" class="p-0 float-left">Senha <span
+                                        id="senha_cadastro_invalid" class="text-danger" style="display: none;">*
+                                        PREENCHA ESSE CAMPO</span></label>
                                 <input class="form-control" name="senha_cadastro" id="senha_cadastro" type="password">
                             </div>
                             <div class="alert alert-danger my-2" id="alert_cadastro" hidden role="alert">
