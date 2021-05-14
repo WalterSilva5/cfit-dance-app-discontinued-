@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from cfit.sessionTester import SessionTester
-# Create your views here.
+from cfit.sessionTester import login_required
+from cfit.sessionTester import adm_required
 
+@login_required
 def home(request):
-    if(SessionTester().verifica_logado(request)):
-        return render(request, 'home.html')
-    else:
-        return redirect("home")
+    return render(request, 'home.html')
+
+
+@login_required
+@adm_required
+def home_adm(request):
+    return render(request, "home_adm.html")

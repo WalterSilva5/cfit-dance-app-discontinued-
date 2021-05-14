@@ -5,8 +5,7 @@ class Usuario(models.Model):
     usuario = models.CharField('usuario', max_length=100, null=False, blank=False, unique=True)
     senha = models.CharField('senha', max_length=100, null=False, blank=False)
     bloqueado = models.BooleanField('bloqueado', default=False)
-    instrutor = models.BooleanField('instrutor', default=False)
-    administrador = models.BooleanField('administrador', default=False)
+    nivel_de_acesso = models.IntegerField('nivel_de_acesso', null=False, blank=False, default=1)
 
 class Aparelho(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)

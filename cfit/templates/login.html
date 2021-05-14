@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block index %}
+{% load static %}
+<div class="row justify-content-center pt-5">
+    <div class="col-5 w3-black text-center">
+        <h1><b>CFIT-LOGIN</b></h1>
+        <cfit-login></cfit-login>
+    </div>
+</div>
+<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
+{% endblock %}

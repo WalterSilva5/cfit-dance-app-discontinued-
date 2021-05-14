@@ -5,15 +5,15 @@ erro_cadastro = function (mensagem) {
 };
 
 cadastrar_usuario = function () {
-    usuario_cadastro = $("#usuario_cadastro").val()
-    senha_cadastro = $("#senha_cadastro").val()
-    if (usuario_cadastro && senha_cadastro) {
+    cadastro_usuario = $("#cadastro_usuario").val()
+    cadastro_senha = $("#cadastro_senha").val()
+    if (cadastro_usuario && cadastro_senha) {
         $.ajax({
             type: "post",
             url: "/cadastro/cadastrar",
             data: {
-                usuario_cadastro,
-                senha_cadastro,
+                cadastro_usuario,
+                cadastro_senha,
             },
             success: function (result) {
                 $("#cadastro_alert_sucesso").show()
@@ -27,37 +27,37 @@ cadastrar_usuario = function () {
         });
     } else {
         erro_cadastro("PREENCHA TODOS OS CAMPOS")
-        if (!usuario_cadastro) {
-            $("#usuario_cadastro_invalid").show()
+        if (!cadastro_usuario) {
+            $("#cadastro_usuario_invalid").show()
         } else {
-            $("#usuario_cadastro_invalid").hide()
+            $("#cadastro_usuario_invalid").hide()
         }
-        if (!senha_cadastro) {
-            $("#senha_cadastro_invalid").show()
+        if (!cadastro_senha) {
+            $("#cadastro_senha_invalid").show()
         } else {
-            $("#senha_cadastro_invalid").hide()
-
+            $("#cadastro_senha_invalid").hide()
         }
     }
 };
-//login
 
+//#######################################################################//
+
+//login
 erro_login = function (mensagem) {
-    $("#alert_login_msg").text(mensagem)
-    $("#alert_login").removeAttr("hidden")
-    $("#alert_login").show()
+    $("#login_alert_msg").text(mensagem)
+    $("#login_alert").show()
 };
 
 efetuar_login = function () {
-    usuario_login = $("#usuario_login").val()
-    senha_login = $("#senha_login").val()
-    if (usuario_login && senha_login) {
+    login_usuario = $("#login_usuario").val()
+    login_senha = $("#login_senha").val()
+    if (login_usuario && login_senha) {
         $.ajax({
             type: "post",
             url: "/login/efetuar_login",
             data: {
-                usuario_login,
-                senha_login,
+                login_usuario,
+                login_senha,
             },
             success: function (result) {
                 if (result == "ok") {
@@ -73,7 +73,3 @@ efetuar_login = function () {
         alert("preencha todos os campos!")
     }
 }
-//fim verificar inputs
-//verificar se usuario esta logado
-
-//fim verificar se usuario esta logado
