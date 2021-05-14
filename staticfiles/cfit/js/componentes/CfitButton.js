@@ -1,9 +1,8 @@
 const CfitButton = {
-
     template: `
         <button 
-            class="btn btn-lg font-weight-bold"
-        ><slot></slot></button>
+            class=" font-weight-bold btn btn-lg w3-orange"
+        ><slot>BUTTON</slot></button>
     `,
 };
 
