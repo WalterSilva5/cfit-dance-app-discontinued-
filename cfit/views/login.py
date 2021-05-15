@@ -21,7 +21,10 @@ def efetuar_login(request):
 
 
 def login(request):
-    return render(request, "login.html")
+    return render(request, "erro.html")
+
+def erro(request):
+    return render(request, "erro.html")
 
 
 def logout(request):

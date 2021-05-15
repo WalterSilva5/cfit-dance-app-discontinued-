@@ -1,0 +1,70 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="row">
+    <div class="container">
+        <h1><b>CFIT ADMIN PLAYLISTS</b></h1>
+    </div>
+    <div class="container">
+        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">PLAYLISTS EXISTENTES
+        </wsi_button>
+        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_adicionar_nova">ADICIONAR NOVA</wsi_button>
+    </div>
+</div>
+<div class="container border border-danger">
+    <div id="painel_criar_playlists" style="display: none;">
+        <p class="col-12"><b>ADICIONAR NOVA PLAYLISTS:</b></p>
+        <form id="form_criar_playlist" autocomplete="off" method="post"
+            action="{% url 'cfit_admin_playlists_cadastrar'  %}" enctype="multipart/form-data">
+            <div class="row mt-2">
+                <div class="col-sm-6">
+                    <wsi_input_group_left>
+                        <template v-slot:slot_label_left>
+                            <b>NOME: </b>
+                        </template>
+                        <template v-slot:slot_input>
+                            <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome"
+                                class="form-control-lg"></wsi_input>
+                        </template>
+                    </wsi_input_group_left>
+                </div>
+                <div class="col-sm-6">
+                    <div class="custom-file">
+                        <label class="custom-file-label w3-deep-purple" for="cadastro_playlist_imagem">BUSCAR
+                            ARQUIVO</label>
+                        <input type="file" class="custom-file-input" id="cadastro_playlist_imagem"
+                            name="cadastro_playlist_imagem">
+                    </div>
+                </div>
+            </div>
+            <h5><b>DESCRIÇÃO:</b></h5>
+            <textarea class="form-control" id="cadastro_playlist_descricao"
+                name="cadastro_playlist_descricao"></textarea>
+            <div class="d-flex flex-row-reverse my-2">
+                <wsi_button class="w3-button w3-teal" id="salvar_playlist">SALVAR</wsi_button>
+            </div>
+        </form>
+
+    </div>
+
+    <div id="painel_listagem_playlists">
+        <div class="container-flex" style="min-height:400px;">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">NOME</th>
+                    </tr>
+                </thead>
+                {% for playlist in playlists %}
+                <tbody>
+                    <tr>
+                        <td> {{playlist.nome}}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
+{% endblock%}

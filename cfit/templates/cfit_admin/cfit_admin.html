@@ -5,31 +5,31 @@
         <a class="navbar-brand col-sm-2" href="/">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
-        <cfit-button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
+        <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
             aria-label="Toggle navigation">OPÇÕES
-        </cfit-button>
+        </wsi_button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mr-auto">
                 <ul class="navbar-nav">
                     <li class="nav-item mx-2">
                         <a href="{% url 'home'  %}">
-                            <cfit-button class="col-sm-12 w3-button my-2"><b>AULAS</b>
-                            </cfit-button>
+                            <wsi_button class="col-sm-12 w3-button my-2"><b>AULAS</b>
+                            </wsi_button>
                         </a>
                     </li>
                     <li class="nav-item mx-2">
                         <a href="">
-                            <cfit-button class="col-sm-12 w3-button my-2"><b>MINHAS INFORMAÇÕES</b>
-                            </cfit-button>
+                            <wsi_button class="col-sm-12 w3-button my-2"><b>MINHAS INFORMAÇÕES</b>
+                            </wsi_button>
                         </a>
                     </li>
 
                 </ul>
             </div>
             <a href="{% url 'logout'  %}" class="mx-3">
-                <cfit-button class="col-sm-12 w3-button w3-red my-2 mx-2"><b>SAIR</b>
-                </cfit-button>
+                <wsi_button class="col-sm-12 w3-button w3-red my-2 mx-2"><b>SAIR</b>
+                </wsi_button>
             </a>
         </div>
     </nav>
@@ -37,14 +37,14 @@
 
 <div class="row">
 
-    <div class="sidenav w3-black border w3-border-orange col-2 text-center pt-3">
-        <cfit-button class="col-sm-12 my-2 mx-1">PLAYLISTS</cfit-button>
-        <cfit-button class="col-sm-12 my-2 mx-1">ALUNOS</cfit-button>
-        <cfit-button class="col-sm-12 my-2 mx-1">MENSAGENS</cfit-button>
-        <cfit-button class="col-sm-12 my-2 mx-1">AJUSTES</cfit-button>
+    <div class="sidenav w3-black border w3-border-orange col-sm-2 text-center pt-3">
+        <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 my-2 mx-1">PLAYLISTS</wsi_button></a>
+        <wsi_button class="col-sm-12 my-2 mx-1">ALUNOS</wsi_button>
+        <wsi_button class="col-sm-12 my-2 mx-1">MENSAGENS</wsi_button>
+        <wsi_button class="col-sm-12 my-2 mx-1">AJUSTES</wsi_button>
     </div>
-    <div class="col-10 border-danger" style="border:3px solid; min-height:500px;">
-        {% block 'paineis' %}
+    <div class="col-sm-10 border-danger" style="border:3px solid; min-height:500px;">
+        {% block 'painels_admin' %}
 
         {% endblock %}
     </div>

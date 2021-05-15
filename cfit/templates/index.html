@@ -5,15 +5,15 @@
         <a class="navbar-brand col-sm-2" href="/">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
-        <cfit-button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
+        <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
             aria-label="Toggle navigation">OPÇÕES
-        </cfit-button>
+        </wsi_button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="{% url 'login'  %}">AULAS</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="{% url 'home'  %}">AULAS</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
@@ -32,7 +32,7 @@
         </div>
         <div>
             <div class="col-sm-12  px-auto">
-                <cfit-button data-toggle="modal" id="botao_login" data-target="#modal_login"
+                <wsi_button data-toggle="modal" id="botao_login" data-target="#modal_login" v-on:click="botao_clicado()"
                     class="w3-orange col-sm-12 px-auto">
                     <div class="row d-flex justify-content-center px-5 text-center">
                         <span style="font-size: 30px;" class="material-icons">
@@ -42,20 +42,20 @@
                     <div>
                         LOGIN
                     </div>
-                </cfit-button>
+                </wsi_button>
             </div>
             <!-- modal login -->
-            <cfit-modal id="modal_login" class="text-center">
+            <wsi_modal id="modal_login" class="text-center">
                 <template v-slot:modal_header>
                     CFIT LOGIN
                 </template>
                 <template v-slot:modal_body>
-                    <cfit-login></cfit-login>
+                    <wsi_login></wsi_login>
                 </template>
-            </cfit-modal>
+            </wsi_modal>
             <!-- end modal login -->
             <!-- modal cadastro -->
-            <cfit-modal id="modal_cadastro" class="text-center">
+            <wsi_modal id="modal_cadastro" class="text-center">
                 <template v-slot:modal_header>
                     CFIT CADASTRO
                 </template>
@@ -81,10 +81,10 @@
                                 <h3>CADASTRADO COM SUCESSO!</h3>
                             </div>
                         </form>
-                        <cfit-button class="w3-orange mx-1 mt-4" onclick="cadastrar_usuario()">CADASTRAR</cfit-button>
+                        <wsi_button class="w3-orange mx-1 mt-4" onclick="cadastrar_usuario()">CADASTRAR</wsi_button>
                     </div>
                 </template>
-            </cfit-modal>
+            </wsi_modal>
             <!-- end modal cadastro -->
         </div>
     </nav>

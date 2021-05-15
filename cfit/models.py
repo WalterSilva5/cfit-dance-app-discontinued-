@@ -7,6 +7,13 @@ class Usuario(models.Model):
     bloqueado = models.BooleanField('bloqueado', default=False)
     nivel_de_acesso = models.IntegerField('nivel_de_acesso', null=False, blank=False, default=1)
 
+
+
+class Playlist(models.Model):
+    nome = models.CharField('nome', max_length=255, unique=True)
+    descricao = models.CharField('descricao', max_length=255, null=True, default='')
+    imagem = models.ImageField("imagem", upload_to="images/", height_field=None, width_field=None, max_length=100)
+
 class Aparelho(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)
     dica = models.CharField('dica', max_length=255, null=True, default='')

@@ -1,9 +1,13 @@
-import CfitButton from "./CfitButton.js";
-import CfitModal from "./CfitModal.js";
-import CfitLogin from "./CfitLogin.js";
+import WsiButton from "./WsiButton.js"
+import WsiModal from "./WsiModal.js"
+import WsiLogin from "./WsiLogin.js"
+import WsiInputComps from "./WsiInput.js"
+import WsiCardComps from "./WsiCard.js"
 const comps = {
-    CfitButton,
-    CfitModal,
-    CfitLogin,
+    WsiButton,
+    WsiModal,
+    WsiLogin,
+    WsiInputComps,
+    WsiCardComps,
 };
 export default comps;

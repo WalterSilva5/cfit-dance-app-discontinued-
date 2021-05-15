@@ -1,4 +1,4 @@
-const CfitModal = {
+const WsiModal = {
     template: `
     <!-- modal login -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -20,4 +20,15 @@ const CfitModal = {
     `,
 };
 
-export default CfitModal;
+export default WsiModal;
+
+
+// exemplo de slot 
+// <wsi_modal id="modal_login" class="text-center">
+// <template v-slot:modal_header>
+//     CFIT LOGIN
+// </template>
+// <template v-slot:modal_body>
+//     <wsi_login></wsi_login>
+// </template>
+// </wsi_modal>

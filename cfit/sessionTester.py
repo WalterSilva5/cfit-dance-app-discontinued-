@@ -13,7 +13,7 @@ def login_required(func):
             else:
                 raise Exception
         except:
-            return redirect("/login")
+            return redirect("/")
         else:
             return f(*args, **kwargs)
     return wrapper_login_required
