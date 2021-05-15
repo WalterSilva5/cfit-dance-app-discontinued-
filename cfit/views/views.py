@@ -4,3 +4,4 @@ from cfit.views.index import *
 from cfit.views.cadastro import *
 from cfit.views.login import *
 from cfit.views.home import *
+from cfit.views.cfit_admin import *

@@ -21,8 +21,17 @@
 </head>
 
 <body id="app">
-    {% block content%} {% endblock content %}
+    <div style="min-height:600px;">
+        {% block content%} {% endblock content %}
+    </div>
+
+    <footer class="footer">
+        <div class="container-flex w3-black py-3 text-center">
+            <strong class="text-light h5">Carvalhos Fit</strong>  <small>&reg;</small>	 <span id="ano"></span>
+        </div>
+    </footer>
     <script type="module" src="{% static 'cfit/js/main/main.js'%}"></script>
+
 </body>
 
 </html>

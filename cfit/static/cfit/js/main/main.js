@@ -4,3 +4,7 @@ app.component('cfit-button', comps.CfitButton)
 app.component('cfit-modal', comps.CfitModal)
 app.component('cfit-login', comps.CfitLogin)
 app.mount("#app");
+
+$( document ).ready(
+    $("#ano").text(new Date().getFullYear())
+) 

@@ -10,22 +10,18 @@
             aria-label="Toggle navigation">OPÇÕES
         </cfit-button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <div id="options" class="mx-auto">
+            <div id="options">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="#">AULAS</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="{% url 'login'  %}">AULAS</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
-                            href="#planos ">PLANOS</a>
-                    </li>
-                    <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
-                            href="#modalidades">MODALIDADES</a>
+                            href="/#planos ">PLANOS</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2 "
-                            href="#contatos ">CONTATOS</a>
+                            href="/#contatos ">CONTATOS</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
@@ -34,7 +30,6 @@
                 </ul>
             </div>
         </div>
-        <div class="col-2"></div>
         <div>
             <div class="col-sm-12  px-auto">
                 <cfit-button data-toggle="modal" id="botao_login" data-target="#modal_login"
