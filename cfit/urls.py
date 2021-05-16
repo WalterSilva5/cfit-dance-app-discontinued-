@@ -1,5 +1,7 @@
 from django.urls import path
 from cfit.views.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('', index, name='index'),
     path('cadastro/cadastrar', cadastrar, name="cadastrar"),
@@ -12,4 +14,5 @@ urlpatterns = [
     path('cfit_admin/cfit_admin_playlists', cfit_admin_playlists, name="cfit_admin_playlists"),
     path('cfit_admin/cfit_admin_playlists/cadastrar', cfit_admin_playlists_cadastrar, name="cfit_admin_playlists_cadastrar"),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

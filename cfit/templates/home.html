@@ -40,62 +40,23 @@
 
 <h1 class="text-center"><b>PLAYLISTS</b></h1>
 
-<div class="row container-flex d-flex justify-content-center">
-   
-    <wsi_card_playlist>
-        <template v-slot:playlist_title>
-            PLAYLIST PRIMEIRA
-        </template>
-        <template v-slot:playlist_img>
-            <img src="{% static 'cfit/img/playlist-2.jpg' %}" class="img-fluid card-img-top">
-        </template>
-        <template v-slot:playlist_descricao>
-            <p>            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, consectetur quisquam? Nemo provident dignissimos cupiditate, veniam, quidem odio officia aut necessitatibus, ipsam pariatur nostrum commodi quas quaerat. Deleniti, amet porro!]
-            </p>
-        </template>
-    </wsi_card_playlist>
-
-
-    <wsi_card_playlist>
-        <template v-slot:playlist_title>
-            PLAYLIST PRIMEIRA
-        </template>
-        <template v-slot:playlist_img>
-            <img src="{% static 'cfit/img/playlist-2.jpg' %}" class="img-fluid card-img-top">
-        </template>
-        <template v-slot:playlist_descricao>
-            descricao do 
-        </template>
-    </wsi_card_playlist>
-
-
-
-    <wsi_card_playlist>
-        <template v-slot:playlist_title>
-            PLAYLIST PRIMEIRA
-        </template>
-        <template v-slot:playlist_img>
-            <img src="{% static 'cfit/img/playlist-2.jpg' %}" class="img-fluid card-img-top">
-        </template>
-        <template v-slot:playlist_descricao>
-            descricao do 
-        </template>
-    </wsi_card_playlist>
-
-
-    <wsi_card_playlist>
-        <template v-slot:playlist_title>
-            PLAYLIST PRIMEIRA
-        </template>
-        <template v-slot:playlist_img>
-            <img src="{% static 'cfit/img/playlist-2.jpg' %}" class="img-fluid card-img-top">
-        </template>
-        <template v-slot:playlist_descricao>
-            descricao do 
-        </template>
-    </wsi_card_playlist>
+<div class="row d-flex justify-content-center">
+    {% for playlist in playlists %}
+    <div class="col-sm-4">
+        <wsi_card_playlist class="shadow p-1 mx-2 my-2">
+            <template v-slot:playlist_title>
+                {{playlist.nome|truncatechars:30 }}
+            </template>
+            <template v-slot:playlist_img>
+                <div class="col-12" > <img src='/{{playlist.imagem}}' class="img-fluid card-img-top" style="height: 200px;"></div>
+            </template>
+            <template v-slot:playlist_descricao>
+                {{playlist.descricao|truncatechars:100 }}
+            </template>
+        </wsi_card_playlist>
+    </div>
+    {% endfor %}
 </div>
-
 
 
 

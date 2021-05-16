@@ -50,13 +50,20 @@
             <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">NOME</th>
+                        <th class="col-4">NOME</th>
+                        <th class="col-8">DESCRIÇÃO</th>
+                        <th>EDITAR</th>
                     </tr>
                 </thead>
                 {% for playlist in playlists %}
                 <tbody>
                     <tr>
-                        <td> {{playlist.nome}}
+                        <td class="col-4"> {{playlist.nome}}
+                        </td>
+                        <td class="col-8 text-nowrap" style=" max-width: 600px; overflow:hidden;">{{playlist.descricao}}
+                        </td>
+                        <td>
+                            <button class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow">EDITAR</button>
                         </td>
                     </tr>
                 </tbody>
