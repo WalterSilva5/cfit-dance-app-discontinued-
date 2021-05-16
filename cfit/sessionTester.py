@@ -31,8 +31,8 @@ def adm_required(func):
             else:
                 raise Exception
         except:
-            return HttpResponse(args[0].session["nivel_de_acesso"])
-            #return redirect("/home")
+            #return HttpResponse(args[0].session["nivel_de_acesso"])
+            return redirect("/home")
         else:
             return f(*args, **kwargs)
     return wrapper_login_required
