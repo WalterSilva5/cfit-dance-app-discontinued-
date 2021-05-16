@@ -1,0 +1,14 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="row">
+    <div class="container">
+        <h1><b>PLAYLIST: {{playlist.nome}}</b></h1>
+    </div>
+    <div class="container">
+        <a href="cfit_admin_playlists_adicionar_aula">
+            <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">ADICIONAR AULA
+            </wsi_button>
+        </a>
+    </div>
+</div>
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
+{% endblock%}

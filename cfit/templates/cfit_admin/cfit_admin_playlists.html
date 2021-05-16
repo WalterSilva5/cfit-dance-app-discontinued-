@@ -65,7 +65,7 @@
                         <td class="col-8 text-nowrap" style=" max-width: 600px; overflow:hidden;">{{playlist.descricao}}
                         </td>
                         <td>
-                            <button class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow">EDITAR</button>
+                            <a href="{% url 'cfit_admin_playlists_aditar'  %}?playlist={{playlist.nome}}" class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow"><b>EDITAR</b></a>
                         </td>
                     </tr>
                 </tbody>

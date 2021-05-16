@@ -20,6 +20,13 @@ class Playlist(models.Model):
     descricao = models.CharField('descricao', max_length=255, null=True, default='')
     #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
     imagem = models.CharField('imagem', max_length=255, null=True, default='')
+
+class Video(models.Model):
+    nome = models.CharField('nome', max_length=255, unique=True)
+    posicao = models.IntegerField('posicao', null=False, default=0)
+    playlist_id = models.IntegerField('playlist_id', null=False)
+    #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
+    link = models.CharField('link', max_length=255, null=False, default='')
     
 class Aparelho(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)

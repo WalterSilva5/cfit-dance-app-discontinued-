@@ -24,7 +24,11 @@
                             </wsi_button>
                         </a>
                     </li>
-
+                    <li class="nav-item mx-2">
+                        {% autoescape off %}
+                            {{botao_admin}}
+                        {% endautoescape %}
+                    </li>
                 </ul>
             </div>
             <a href="{% url 'logout'  %}" class="mx-3">

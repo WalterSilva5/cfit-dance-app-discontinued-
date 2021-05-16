@@ -14,6 +14,11 @@ urlpatterns = [
     path('cfit_admin', cfit_admin, name="cfit_admin"),
     path('cfit_admin/cfit_admin_playlists', cfit_admin_playlists, name="cfit_admin_playlists"),
     path('cfit_admin/cfit_admin_playlists/cadastrar', cfit_admin_playlists_cadastrar, name="cfit_admin_playlists_cadastrar"),
+    path('cfit_admin/cfit_admin_playlists_aditar', cfit_admin_playlists_aditar, name="cfit_admin_playlists_aditar"),
+    path('cfit_admin/cfit_admin_playlists_adicionar_aula', cfit_admin_playlists_adicionar_aula, name="cfit_admin_playlists_adicionar_aula"),
+    path('cfit_admin/cfit_admin_playlists_adicionar_aula/adicionar', cfit_admin_playlists_adicionar_aula_adicionar, name="cfit_admin_playlists_adicionar_aula_adicionar"),
+
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
