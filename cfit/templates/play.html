@@ -35,28 +35,7 @@
     </nav>
 </div>
 
-<h1 class="text-center"><b>PLAYLISTS</b></h1>
-
-<div class="row d-flex justify-content-center">
-    {% for playlist in playlists %}
-    <a  class="col-sm-4" href="{% url 'play'  %}?playlist_nome={{playlist.nome}}">
-        <div>
-            <wsi_card_playlist class="shadow p-1 mx-2 my-2">
-                <template v-slot:playlist_title>
-                    {{playlist.nome|truncatechars:30 }}
-                </template>
-                <template v-slot:playlist_img>
-                    <div class="col-12"><img src='{{playlist.imagem}}' class="img-fluid card-img-top"
-                            style="height: 200px;"></div>
-                </template>
-                <template v-slot:playlist_descricao>
-                    {{playlist.descricao|truncatechars:100 }}
-                </template>
-            </wsi_card_playlist>
-        </div>
-    </a>
-    {% endfor %}
-</div>
+<h1 class="text-center"><b>PLAYER: {{playlist_nome}}</b></h1>
 
 
 <script src="{% static 'cfit/js/index/index_logado.js' %}"></script>

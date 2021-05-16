@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/erro', erro, name="erro"),
     path('login/logout', logout, name="logout"),
     path('home', home, name="home"),
+    path('play', play, name="play"),
     path('cfit_admin', cfit_admin, name="cfit_admin"),
     path('cfit_admin/cfit_admin_playlists', cfit_admin_playlists, name="cfit_admin_playlists"),
     path('cfit_admin/cfit_admin_playlists/cadastrar', cfit_admin_playlists_cadastrar, name="cfit_admin_playlists_cadastrar"),

@@ -11,3 +11,6 @@ def home(request):
     playlists = list(Playlist.objects.all().values())
     return render(request, 'home.html', {"playlists": playlists})
 
+def play(request):
+    playlist_nome = request.GET["playlist_nome"]
+    return render(request, 'play.html', {"playlist_nome": playlist_nome})
