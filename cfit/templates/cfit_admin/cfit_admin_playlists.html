@@ -9,7 +9,7 @@
         <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_adicionar_nova">ADICIONAR NOVA</wsi_button>
     </div>
 </div>
-<div class="container border border-danger">
+<div class="container">
     <div id="painel_criar_playlists" style="display: none;">
         <p class="col-12"><b>ADICIONAR NOVA PLAYLISTS:</b></p>
         <form id="form_criar_playlist" autocomplete="off" method="post"
@@ -17,8 +17,8 @@
             <div class="row mt-2">
                 <div class="col-sm-6">
                     <wsi_input_group_left>
-                        <template v-slot:slot_label_left>
-                            <b>NOME: </b>
+                        <template v-slot:slot_label_left >
+                            <b class="w3-deep-purple rounded p-1">NOME: </b>
                         </template>
                         <template v-slot:slot_input>
                             <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome"
@@ -27,12 +27,21 @@
                     </wsi_input_group_left>
                 </div>
                 <div class="col-sm-6">
-                    <div class="custom-file">
-                        <label class="custom-file-label w3-deep-purple" for="cadastro_playlist_imagem">BUSCAR
+                    <wsi_input_group_left>
+                        <template v-slot:slot_label_left>
+                            <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
+                        </template>
+                        <template v-slot:slot_input>
+                            <wsi_input class="form-control-lg" name="cadastro_playlist_imagem" id="cadastro_playlist_imagem"></wsi_input>
+                        </template>
+                    </wsi_input_group_left>
+
+                    <!-- <div class="custom-file">
+                         <label class="custom-file-label w3-deep-purple" for="cadastro_playlist_imagem">BUSCAR
                             ARQUIVO</label>
                         <input type="file" class="custom-file-input" id="cadastro_playlist_imagem"
-                            name="cadastro_playlist_imagem">
-                    </div>
+                            name="cadastro_playlist_imagem"> 
+                    </div>-->
                 </div>
             </div>
             <h5><b>DESCRIÇÃO:</b></h5>

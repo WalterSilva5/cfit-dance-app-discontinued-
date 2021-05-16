@@ -79,3 +79,6 @@ efetuar_login = function () {
         login_erro("PREENCHA TODOS OS CAMPOS")
     }
 }
+
+$('#openInViewerButtonIcon').hide()
+$('button').hide()

@@ -18,8 +18,8 @@ def dir_upload():
 class Playlist(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)
     descricao = models.CharField('descricao', max_length=255, null=True, default='')
-    imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
-
+    #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
+    imagem = models.CharField('imagem', max_length=255, null=True, default='')
 class Aparelho(models.Model):
     nome = models.CharField('nome', max_length=255, unique=True)
     dica = models.CharField('dica', max_length=255, null=True, default='')

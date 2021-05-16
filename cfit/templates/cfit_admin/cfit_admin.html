@@ -37,13 +37,13 @@
 
 <div class="row">
 
-    <div class="sidenav w3-black border w3-border-orange col-sm-2 text-center pt-3">
-        <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 my-2 mx-1">PLAYLISTS</wsi_button></a>
-        <wsi_button class="col-sm-12 my-2 mx-1">ALUNOS</wsi_button>
-        <wsi_button class="col-sm-12 my-2 mx-1">MENSAGENS</wsi_button>
-        <wsi_button class="col-sm-12 my-2 mx-1">AJUSTES</wsi_button>
+    <div class="sidenav w3-black col text-center pt-3">
+        <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 my-2 mx-1 btn-sm">PLAYLISTS</wsi_button></a>
+        <wsi_button class="col-sm-12 my-2 mx-1 btn-sm">ALUNOS</wsi_button>
+        <wsi_button class="col-sm-12 my-2 mx-1 btn-sm">MENSAGENS</wsi_button>
+        <wsi_button class="col-sm-12 my-2 mx-1 btn-sm">AJUSTES</wsi_button>
     </div>
-    <div class="col-sm-10 border-danger" style="border:3px solid; min-height:500px;">
+    <div class="col-sm-10">
         {% block 'painels_admin' %}
 
         {% endblock %}
