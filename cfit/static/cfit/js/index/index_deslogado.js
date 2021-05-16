@@ -49,7 +49,7 @@ login_erro = function (mensagem) {
 };
 
 efetuar_login = function () {
-    login_usuario = $("#login_usuario").val()
+    login_usuario = $("#login_usuario").val().toUpperCase()
     if (!login_usuario) {
         $("#login_usuario_invalid").show()
     }

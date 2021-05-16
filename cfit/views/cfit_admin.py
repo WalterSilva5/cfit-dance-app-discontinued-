@@ -15,9 +15,9 @@ def cfit_admin_playlists(request):
 
 @csrf_exempt
 def cfit_admin_playlists_cadastrar(request):
-    nome = request.POST["cadastro_playlist_nome"]
-    imagem = request.FILES["cadastro_playlist_imagem"]
-    descricao = request.POST["cadastro_playlist_descricao"]
+    nome = request.POST["cadastro_playlist_nome"].upper()
+    imagem = request.POST["cadastro_playlist_imagem"]
+    descricao = request.POST["cadastro_playlist_descricao"].upper()
     playlist = Playlist(nome=nome, imagem=imagem, descricao=descricao)
     playlist.save()
     return redirect("cfit_admin_playlists")

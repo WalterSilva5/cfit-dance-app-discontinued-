@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 @csrf_exempt
 def efetuar_login(request):
-    usuario = request.POST["login_usuario"]
+    usuario = request.POST["login_usuario"].upper()
     senha = request.POST["login_senha"]
     if(Usuario.objects.filter(usuario=usuario)):
         usr = Usuario.objects.filter(usuario=usuario)

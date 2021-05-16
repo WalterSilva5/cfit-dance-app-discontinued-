@@ -11,7 +11,7 @@ def validarLogin(login):
 @csrf_exempt
 @not_logged_only
 def cadastrar(request):
-    usuario = validarLogin(request.POST["cadastro_usuario"])
+    usuario = validarLogin(request.POST["cadastro_usuario"]).upper()
     if usuario == "login_invalido":
         return HttpResponse("LOGIN INVALIDO")
 
