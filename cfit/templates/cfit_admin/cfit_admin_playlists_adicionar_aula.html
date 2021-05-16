@@ -5,20 +5,20 @@
         <form autocomplete="off" action="{% url 'cfit_admin_playlists_adicionar_aula_adicionar'  %}" method="post">
             {% csrf_token %}
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label class="h4" for="nome_do_video"><b>NOME</b></label>
                     <wsi_input required class="border w3-border-deep-purple" id="nome_do_video" name="nome_do_video"></wsi_input>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6 my-3">
+                <div class="col-md-6 my-3">
                     <label class="h4" for="link_do_video"><b>LINK DO VIDEO</b></label>
                     <wsi_input required class="border w3-border-deep-purple" id="link_do_video" name="link_do_video"></wsi_input>
                 </div>
             </div>
             <div class="row form-select form-select-lg container">
                 <select id="select_id_da_playlist" name="select_id_da_playlist"
-                    class="rounded form-select form-select-lg my-3 font-weight-bold col-6 h5 border w3-border-deep-purple"
+                    class="rounded form-select form-select-lg my-3 font-weight-bold col-md-6 h5 border w3-border-deep-purple"
                     required>
                     <option selected disabled hidden value="">ESCOLHA UMA PLAYLIST</option>
                     {% for playlist in playlists %}
