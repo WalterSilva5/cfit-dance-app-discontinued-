@@ -9,11 +9,12 @@ def validarLogin(login):
 
 
 @csrf_exempt
-@not_logged_only
+#@not_logged_only
 def cadastrar(request):
-    usuario = validarLogin(request.POST["cadastro_usuario"]).upper()
-    if usuario == "login_invalido":
-        return HttpResponse("LOGIN INVALIDO")
+    usuario = request.POST["cadastro_usuario"].upper()
+    print(usuario)
+    # if usuario == "login_invalido":
+    #     return HttpResponse("LOGIN INVALIDO")
 
     senha = request.POST["cadastro_senha"]
     usuario = Usuario(usuario=usuario, senha=senha,
