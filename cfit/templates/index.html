@@ -13,7 +13,8 @@
             <div id="options">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-1">
-                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2" href="{% url 'home'  %}">AULAS</a>
+                        <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
+                            href="{% url 'home'  %}">AULAS</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
@@ -89,11 +90,10 @@
         </div>
     </nav>
 </div>
-<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
-<!-- end modal login -->
 <!-- end navbar -->
 
 {% block index %}
 
 {% endblock %}
+<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 {% endblock %}

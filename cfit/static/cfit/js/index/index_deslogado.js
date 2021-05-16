@@ -1,3 +1,4 @@
+alert("carregou");
 erro_cadastro = function (mensagem) {
     $("#alert_cadastro_msg").text(mensagem)
     $("#alert_cadastro").show()
