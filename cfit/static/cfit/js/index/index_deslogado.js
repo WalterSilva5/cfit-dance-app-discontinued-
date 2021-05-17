@@ -21,7 +21,6 @@ cadastrar_usuario = function () {
                 cadastro_senha,
             },
             success: function (result) {
-                console.log(result)
                 if(result == "cadastro_efetuado"){
                     $("#cadastro_alert_sucesso").show()
                     $("#alert_cadastro").hide()

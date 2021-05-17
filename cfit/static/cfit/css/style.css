@@ -1,0 +1,14 @@
+.row-no-padding {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left:0;
+    padding-right:0;
+}
+
+[class*="col-"],
+/* Elements whose class attribute begins with "col-" */
+[class^="col-"] {
+    /* Elements whose class attribute contains the substring "col-" */
+    padding-left: 0;
+    padding-right: 0;
+}

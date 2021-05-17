@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from cfit.models import Usuario
 from django.shortcuts import redirect
+from django.contrib.sessions.models import Session
 
 # Create your views here.
 
@@ -33,9 +34,19 @@ def efetuar_login(request):
     if not usr:
         return HttpResponse("senha_invalida")
     else:
-        request.session["nivel_de_acesso"] = usr["nivel_de_acesso"]
-        request.session["usuario"] = usuario
+        try:
+            ses = Session.objects.all()
+            for k in ses:
+                print(k.get_decoded())
+                if (k.get_decoded()["usuario"] == usuario):
+                    x=Session.objects.filter(usuario=usuario)
+                    x.delete()
+        except:
+            pass
+        request.session["nivel_de_acesso"]=usr["nivel_de_acesso"]
+        request.session["usuario"]=usuario
         return HttpResponse("ok")
+
 
 def login(request):
     return render(request, "erro.html")

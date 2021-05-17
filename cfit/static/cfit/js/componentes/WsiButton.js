@@ -1,8 +1,7 @@
-const CfitButton = {
+const WsiButton = {
     template: `
-        <button 
-            class="font-weight-bold btn btn-lg w3-orange rounded"
-        ><slot>BUTTON</slot></button>
+        <button class="btn border w3-border-black px-2 w3-deep-orange font-weight-bold w3-text-black w3-hover-blue"
+        ><slot><b>BUTTON</b></slot></button>
     `,
 };
-export default CfitButton;
+export default WsiButton;

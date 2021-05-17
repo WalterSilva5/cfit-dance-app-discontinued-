@@ -35,16 +35,16 @@
     </nav>
 </div>
 
-<div class="row">
+<div class="row container-fluid">
 
-    <div class="sidenav w3-black col text-center pt-3">
-        <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 my-2 mx-1 w3-deep-purple">PLAYLISTS</wsi_button></a>
-        <wsi_button class="col-sm-12 my-2 mx-1 w3-deep-purple">ALUNOS</wsi_button>
-        <wsi_button class="col-sm-12 my-2 mx-1 w3-deep-purple">MENSAGENS</wsi_button>
-        <wsi_button class="col-sm-12 my-2 mx-1 w3-deep-purple">AJUSTES</wsi_button>
-        <wsi_button class="col-sm-12 my-2 mx-1 w3-deep-purple">AULAS</wsi_button>
+    <div class="w3-black col text-center pt-3 row-no-padding">
+        <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 w3-deep-purple">PLAYLISTS</wsi_button></a>
+        <wsi_button class="col-sm-12 w3-deep-purple">ALUNOS</wsi_button>
+        <wsi_button class="col-sm-12 w3-deep-purple">MENSAGENS</wsi_button>
+        <wsi_button class="col-sm-12 w3-deep-purple">AJUSTES</wsi_button>
+        <wsi_button class="col-12 w3-deep-purple">AULAS</wsi_button>
     </div>
-    <div class="col-sm-10">
+    <div class="col-sm-10 container-fluid ">
         {% block 'painels_admin' %}
 
         {% endblock %}
