@@ -7,6 +7,11 @@
         <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">PLAYLISTS EXISTENTES
         </wsi_button>
         <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_adicionar_nova">ADICIONAR NOVA</wsi_button>
+        <div class="row container">
+            {% autoescape off %}
+            {{erro}}
+            {% endautoescape %}
+        </div>
     </div>
 </div>
 <div class="container">
@@ -17,12 +22,12 @@
             <div class="row mt-2">
                 <div class="col-sm-6">
                     <wsi_input_group_left>
-                        <template v-slot:slot_label_left >
+                        <template v-slot:slot_label_left>
                             <b class="w3-deep-purple rounded p-1">NOME: </b>
                         </template>
                         <template v-slot:slot_input>
-                            <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome"
-                                class="form-control-lg"></wsi_input>
+                            <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome" class="form-control-lg"
+                                required></wsi_input>
                         </template>
                     </wsi_input_group_left>
                 </div>
@@ -32,14 +37,15 @@
                             <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
                         </template>
                         <template v-slot:slot_input>
-                            <wsi_input class="form-control-lg" name="cadastro_playlist_imagem" id="cadastro_playlist_imagem"></wsi_input>
+                            <wsi_input class="form-control-lg" name="cadastro_playlist_imagem"
+                                id="cadastro_playlist_imagem" required></wsi_input>
                         </template>
                     </wsi_input_group_left>
                 </div>
             </div>
             <h5><b>DESCRIÇÃO:</b></h5>
-            <textarea class="form-control" id="cadastro_playlist_descricao"
-                name="cadastro_playlist_descricao"></textarea>
+            <textarea class="form-control" id="cadastro_playlist_descricao" name="cadastro_playlist_descricao"
+                required></textarea>
             <div class="d-flex flex-row-reverse my-2">
                 <wsi_button class="w3-button w3-teal" id="salvar_playlist">SALVAR</wsi_button>
             </div>
@@ -65,7 +71,8 @@
                         <td class="col-8 text-nowrap" style=" max-width: 600px; overflow:hidden;">{{playlist.descricao}}
                         </td>
                         <td>
-                            <a href="{% url 'cfit_admin_playlists_aditar'  %}?playlist={{playlist.nome}}" class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow"><b>EDITAR</b></a>
+                            <a href="{% url 'cfit_admin_playlists_aditar'  %}?playlist={{playlist.nome}}"
+                                class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow"><b>EDITAR</b></a>
                         </td>
                     </tr>
                 </tbody>
