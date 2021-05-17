@@ -1,25 +1,28 @@
 const WsiLogin = {
     template: `
-    <div class="row d-flex justify-content-center text-center">
-        <div class="col-12 w3-black py-4 rounded border w3-border-deep-orange">
+    <div class="row d-flex justify-content-center text-center" style="background-color: rgb(5.8%, 5.8%, 5.8%);">
+        <div class="col-12 py-4 rounded">
             <form id="form-login" autocomplete="off" class="container">
-                <label for="login_usuario" class="p-0 float-left font-weight-bold">Usuario <span class="text-danger" id="login_usuario_invalid" style="display:none">* CAMPO OBRIGATORIO!</span></label>
-                <input class="form-control" name="login_usuario" id="login_usuario" type="text">
+                <label for="login_usuario" class="p-0 float-left font-weight-bold">Usuario <span class="text-danger"
+                        id="login_usuario_invalid" style="display:none">* CAMPO OBRIGATORIO!</span></label>
+                <input class="form-control form-control-lg" name="login_usuario" id="login_usuario" type="text" v-model="login_usuario" v-bind:value>
                 <div class="my-2">
-                    <label for="login_senha" class="p-0 float-left font-weight-bold"><b>Senha</b><span class="text-danger" id="login_senha_invalid" style="display:none">* CAMPO OBRIGATORIO</span></label>
-                    <input class="form-control" name="login_senha" id="login_senha" type="password">
+                    <label for="login_senha" class="p-0 float-left font-weight-bold"><b>Senha</b><span class="text-danger"
+                            id="login_senha_invalid" style="display:none">* CAMPO OBRIGATORIO</span></label>
+                    <input class="form-control form-control-lg" name="login_senha" id="login_senha" type="password">
                 </div>
                 <div class="alert alert-danger my-2" id="login_alert" role="alert" style="display: none;">
                     <h3 id="login_alert_msg"></h3>
                 </div>
             </form>
-            <wsi_button class="mx-1 mt-4 w3-xlarge" onclick="efetuar_login()"  style="filter: sepia(15%);">LOGIN</wsi_button>
+            <wsi_button class="mx-1 mt-4 w3-xlarge" style="filter: sepia(15%);" v-on:click="efetuar_login">LOGIN</wsi_button>
             <div class="mt-5">
                 <div class="col-12 d-flex justify-content-center">
                     <div>
                         Não cadastrado?
-                        <button data-target="#modal_cadastro" data-toggle="modal" id="btn_cadastre_se" class="btn w3-blue">
-                            <b class="font-weight-bold">CADASTRE-SE</b>
+                        <button data-target="#modal_cadastro" data-toggle="modal" id="btn_cadastre_se"
+                            class="btn btn-dark w3-text-orange">
+                            <b class="font-weight-bold h5">CADASTRE-SE</b>
                         </button>
                     </div>
                 </div>
@@ -27,28 +30,41 @@ const WsiLogin = {
         </div>
     </div>
     `,
-
+    data() {
+        return {
+            login_usuario: "",
+        }
+    },
+    watch: {
+        login_usuario(novo_texto, texto_antigo) {
+            this.login_usuario = novo_texto.toUpperCase();
+        }
+    },
     methods: {
-        login_erro: function (mensagem) {
-            $("#login_alert_msg").text(mensagem)
-            $("#login_alert").show()
-        },
-
         efetuar_login: function () {
-            login_usuario = $("#login_usuario").val().toUpperCase()
-            if (!login_usuario) {
+            let login_erro = function (mensagem) {
+                $("#login_alert_msg").text(mensagem)
+                $("#login_alert").show()
+            };
+            let login_senha = $("#login_senha").val()
+            if (this.login_usuario == "") {
                 $("#login_usuario_invalid").show()
+            }else{
+                $("#login_usuario_invalid").hide()
+
             }
-            login_senha = $("#login_senha").val()
-            if (!login_senha) {
+            if (login_senha == "") {
                 $("#login_senha_invalid").show()
+            }else{
+                $("#login_senha_invalid").hide()
             }
-            if (login_usuario && login_senha) {
+            console.log(login_senha)
+            if (this.login_usuario!="" && login_senha!="") {
                 $.ajax({
                     type: "post",
                     url: "/login/efetuar_login",
                     data: {
-                        login_usuario,
+                        login_usuario: this.login_usuario,
                         login_senha,
                     },
                     success: function (result) {
@@ -56,20 +72,20 @@ const WsiLogin = {
                             $("#form-login").trigger("reset");
                             window.location.replace("/home")
                         } else if (result == "nao_cadastrado") {
-                            $this.login_erro("USUARIO NÃO CADASTRADO")
+                            login_erro("USUARIO NÃO CADASTRADO")
                         } else if (result = "usuario_menor_que_4") {
-                            $this.login_erro("USUARIO INVALIDO")
+                            login_erro("USUARIO INVALIDO")
                         } else {
                             console.log(result)
                         }
                     },
                     error: function (result) {
-                        $this.login_erro(result.statusText)
+                        login_erro(result.statusText)
                         console.log(result)
                     }
                 });
             } else {
-                $this.login_erro("PREENCHA TODOS OS CAMPOS")
+                login_erro("PREENCHA TODOS OS CAMPOS")
             }
         },
     }

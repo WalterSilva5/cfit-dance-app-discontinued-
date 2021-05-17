@@ -3,14 +3,14 @@ const WsiModal = {
     <!-- modal login -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content w3-black w3-border w3-border-orange rounded">
-                <div class="modal-header">
-                    <h1 class="w-100 text-center font-weight-bold"><slot name="modal_header"></slot></h1>
+            <div class="modal-content w3-black rounded" style="background-color: rgb(5.8%, 5.8%, 5.8%);">
+                <div class="modal-header w3-border-black" style="background-color: rgb(5.8%, 5.8%, 5.8%);">
+                    <h1 class="h1 w-100 text-center font-weight-bold"><slot name="modal_header"></slot></h1>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="background-color: rgb(5.8%, 5.8%, 5.8%);">
                     <slot name="modal_body"></slot>
                 </div>
             </div>
