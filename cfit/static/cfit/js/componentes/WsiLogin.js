@@ -18,7 +18,7 @@ const WsiLogin = {
                 <div class="col-12 d-flex justify-content-center">
                     <div>
                         Não cadastrado?
-                        <wsi_button class="w3-red text-light" data-target="#modal_cadastro" data-toggle="modal">
+                        <wsi_button class="w3-red text-light" data-target="#modal_cadastro" data-target="#modal_login" data-toggle="modal" id="btn_cadastre_se">
                             CADASTRE-SE
                         </wsi_button>
                     </div>
