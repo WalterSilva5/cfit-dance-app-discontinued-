@@ -26,7 +26,58 @@ const WsiLogin = {
             </div>
         </div>
     </div>
-    `
+    `,
+
+    methods: {
+        login_erro: function (mensagem) {
+            $("#login_alert_msg").text(mensagem)
+            $("#login_alert").show()
+        },
+
+        efetuar_login: function () {
+            login_usuario = $("#login_usuario").val().toUpperCase()
+            if (!login_usuario) {
+                $("#login_usuario_invalid").show()
+            }
+            login_senha = $("#login_senha").val()
+            if (!login_senha) {
+                $("#login_senha_invalid").show()
+            }
+            if (login_usuario && login_senha) {
+                $.ajax({
+                    type: "post",
+                    url: "/login/efetuar_login",
+                    data: {
+                        login_usuario,
+                        login_senha,
+                    },
+                    success: function (result) {
+                        if (result == "ok") {
+                            $("#form-login").trigger("reset");
+                            window.location.replace("/home")
+                        } else if (result == "nao_cadastrado") {
+                            $this.login_erro("USUARIO NÃO CADASTRADO")
+                        } else if (result = "usuario_menor_que_4") {
+                            $this.login_erro("USUARIO INVALIDO")
+                        } else {
+                            console.log(result)
+                        }
+                    },
+                    error: function (result) {
+                        $this.login_erro(result.statusText)
+                        console.log(result)
+                    }
+                });
+            } else {
+                $this.login_erro("PREENCHA TODOS OS CAMPOS")
+            }
+        },
+    }
 }
+
+
+
+
+
 
 export default WsiLogin;
