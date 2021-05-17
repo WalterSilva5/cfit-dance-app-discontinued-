@@ -47,10 +47,19 @@
                             <h5><b>DESCRIÇÃO:</b></h5>
                             <textarea value="{{playlist.descricao}}" class="form-control" id="edit_playlist_descricao"
                                 name="edit_playlist_descricao" required rows=5></textarea>
-                            <div class="container">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="switch1">
-                                    <label class="custom-control-label" for="switch1"><b>OCULTA</b></label>
+                            <div class="container mt-4 col-12">
+                                <div class="row container">
+                                    <h5 class="float-left"><b>OCULTA:</b></h5>
+                                    <select id="edit_playlist_desabilitada" name="edit_playlist_desabilitada"
+                                        class="rounded form-select form-select-lg font-weight-bold col-md-3 ml-2">
+                                        {% if playlist.desabilitada == True %}
+                                        <option value="True">SIM</option>
+                                        {% else %}
+                                        <option value="False">NÃO</option>
+                                        {% endif%}
+                                        <option value="True">SIM</option>
+                                        <option value="False">NÃO</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="d-flex flex-row-reverse my-2">

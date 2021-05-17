@@ -45,6 +45,7 @@ def cfit_admin_playlists_editar_salvar(request):
         playlist.nome = request.POST["edit_playlist_nome"].upper()
         playlist.imagem = request.POST["edit_playlist_imagem"]
         playlist.descricao = request.POST["edit_playlist_descricao"].upper()
+        playlist.desabilitada = request.POST["edit_playlist_desabilitada"]
         playlist.save()
         playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
     except Exception as e:

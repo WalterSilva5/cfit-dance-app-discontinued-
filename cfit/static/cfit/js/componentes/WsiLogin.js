@@ -62,7 +62,7 @@ const WsiLogin = {
             if (this.login_usuario!="" && login_senha!="") {
                 $.ajax({
                     type: "post",
-                    url: "/login/efetuar_login",
+                    url: "/login/efetuar_login/",
                     data: {
                         login_usuario: this.login_usuario,
                         login_senha,

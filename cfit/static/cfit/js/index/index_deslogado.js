@@ -15,7 +15,7 @@ cadastrar_usuario = function () {
     if (cadastro_usuario && cadastro_senha) {
         $.ajax({
             type: "post",
-            url: "/cadastro/cadastrar",
+            url: "/cadastro/cadastrar/",
             data: {
                 cadastro_usuario,
                 cadastro_senha,
