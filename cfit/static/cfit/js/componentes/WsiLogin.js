@@ -2,11 +2,11 @@ const WsiLogin = {
     template: `
     <div class="row d-flex justify-content-center text-center">
         <div class="col-12 w3-black py-4 rounded border w3-border-deep-orange">
-            <form id="form-login" autocomplete="off">
-                <label for="login_usuario" class="p-0 float-left">Usuario <span class="text-danger" id="login_usuario_invalid" style="display:none">* CAMPO OBRIGATORIO!</span></label>
+            <form id="form-login" autocomplete="off" class="container">
+                <label for="login_usuario" class="p-0 float-left font-weight-bold">Usuario <span class="text-danger" id="login_usuario_invalid" style="display:none">* CAMPO OBRIGATORIO!</span></label>
                 <input class="form-control" name="login_usuario" id="login_usuario" type="text">
                 <div class="my-2">
-                    <label for="login_senha" class="p-0 float-left">Senha <span class="text-danger" id="login_senha_invalid" style="display:none">* CAMPO OBRIGATORIO</span></label>
+                    <label for="login_senha" class="p-0 float-left font-weight-bold"><b>Senha</b><span class="text-danger" id="login_senha_invalid" style="display:none">* CAMPO OBRIGATORIO</span></label>
                     <input class="form-control" name="login_senha" id="login_senha" type="password">
                 </div>
                 <div class="alert alert-danger my-2" id="login_alert" role="alert" style="display: none;">
@@ -19,7 +19,7 @@ const WsiLogin = {
                     <div>
                         Não cadastrado?
                         <button data-target="#modal_cadastro" data-toggle="modal" id="btn_cadastre_se" class="btn w3-blue">
-                            <b>CADASTRE-SE</b>
+                            <b class="font-weight-bold">CADASTRE-SE</b>
                         </button>
                     </div>
                 </div>
