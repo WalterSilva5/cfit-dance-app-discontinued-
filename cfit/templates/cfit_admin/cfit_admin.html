@@ -35,16 +35,16 @@
     </nav>
 </div>
 
-<div class="row container-fluid">
+<div class="row container-fluid pb-5" style="margin-bottom:0;">
 
-    <div class="w3-black col text-center pt-3 row-no-padding">
+    <div class="w3-black col text-center pt-3 row-no-padding" style="padding-bottom:auto;">
         <a href="{% url 'cfit_admin_playlists'  %}"><wsi_button class="col-sm-12 w3-deep-purple">PLAYLISTS</wsi_button></a>
         <wsi_button class="col-sm-12 w3-deep-purple">ALUNOS</wsi_button>
         <wsi_button class="col-sm-12 w3-deep-purple">MENSAGENS</wsi_button>
         <wsi_button class="col-sm-12 w3-deep-purple">AJUSTES</wsi_button>
         <wsi_button class="col-12 w3-deep-purple">AULAS</wsi_button>
     </div>
-    <div class="col-sm-10 container-fluid ">
+    <div class="col-sm-10 container-fluid" style="margin-bottom:0;">
         {% block 'painels_admin' %}
 
         {% endblock %}

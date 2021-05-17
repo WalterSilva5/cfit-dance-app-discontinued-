@@ -1,8 +1,8 @@
 {% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
-<div class="row">
+<div class="row container ml-3">
     <div class="container">
         <h1><b>ADICIONAR AULA</b></h1>
-        <form autocomplete="off" action="{% url 'cfit_admin_playlists_adicionar_aula_adicionar'  %}" method="post">
+        <form autocomplete="off" action="{% url 'cfit_admin_playlists_adicionar_aula_adicionar'  %}" method="post" class="container">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-6">
@@ -16,7 +16,7 @@
                     <wsi_input required class="border w3-border-deep-purple" id="link_do_video" name="link_do_video"></wsi_input>
                 </div>
             </div>
-            <div class="row form-select form-select-lg container">
+            <div class="row form-select form-select-lg">
                 <select id="select_id_da_playlist" name="select_id_da_playlist"
                     class="rounded form-select form-select-lg my-3 font-weight-bold col-md-6 h5 border w3-border-deep-purple"
                     required>
