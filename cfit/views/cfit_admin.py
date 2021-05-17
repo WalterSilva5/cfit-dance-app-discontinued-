@@ -12,12 +12,12 @@ def cfit_admin(request):
 
 
 @adm_required
-def cfit_admin_playlists(request):
-
+def cfit_admin_playlists(request, kwargs=""):
     playlists = list(Playlist.objects.all().values())
     return render(request, 'cfit_admin/cfit_admin_playlists.html', {"playlists": playlists})
 
 
+@adm_required
 @csrf_exempt
 def cfit_admin_playlists_cadastrar(request):
     try:
@@ -31,17 +31,36 @@ def cfit_admin_playlists_cadastrar(request):
         return render(request, "cfit_admin/cfit_admin_playlists.html", {"erro": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
 
 
+@adm_required
 def cfit_admin_playlists_aditar(request):
     playlist = list(Playlist.objects.filter(
         nome=request.GET["playlist"]).values())[0]
     return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist})
 
 
+@adm_required
+def cfit_admin_playlists_editar_salvar(request):
+    try:
+        playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
+        playlist.nome = request.POST["edit_playlist_nome"].upper()
+        playlist.imagem = request.POST["edit_playlist_imagem"]
+        playlist.descricao = request.POST["edit_playlist_descricao"].upper()
+        playlist.save()
+        playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
+    except Exception as e:
+        msg=f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"
+        return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
+    else:
+        msg=f"<h4 class='alert alert-success'>SUCESSO</h4>"
+        return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
+
+@adm_required
 def cfit_admin_playlists_adicionar_aula(request):
     playlists = list(Playlist.objects.all().values())
     return render(request, "cfit_admin/cfit_admin_playlists_adicionar_aula.html", {"playlists": playlists})
 
 
+@adm_required
 def cfit_admin_playlists_adicionar_aula_adicionar(request):
     try:
         nome = request.POST["nome_do_video"].upper()
@@ -49,7 +68,7 @@ def cfit_admin_playlists_adicionar_aula_adicionar(request):
         playlist_id = request.POST["select_id_da_playlist"]
         posicao = 0
         video = Video(nome=nome, link=link,
-                    playlist_id=playlist_id, posicao=posicao)
+                      playlist_id=playlist_id, posicao=posicao)
         video.save()
         return redirect("cfit_admin_playlists", {"erro": "<h4 class='alert alert-success'>SUCESSO</h4>"})
     except Exception as e:

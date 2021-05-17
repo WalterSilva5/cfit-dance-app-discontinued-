@@ -15,7 +15,7 @@ const WsiLogin = {
                     <h3 id="login_alert_msg"></h3>
                 </div>
             </form>
-            <wsi_button class="mx-1 mt-4 w3-xlarge" style="filter: sepia(15%);" v-on:click="efetuar_login">LOGIN</wsi_button>
+            <wsi_button class="mx-1 mt-4 w3-xlarge col-8" style="filter: sepia(15%);" v-on:click="efetuar_login">LOGIN</wsi_button>
             <div class="mt-5">
                 <div class="col-12 d-flex justify-content-center">
                     <div>

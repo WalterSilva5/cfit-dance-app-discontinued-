@@ -37,7 +37,7 @@ def efetuar_login(request):
         try:
             ses = Session.objects.all()
             for k in ses:
-                print(k.get_decoded())
+                #print(k.get_decoded())
                 if (k.get_decoded()["usuario"] == usuario):
                     x=Session.objects.filter(usuario=usuario)
                     x.delete()
