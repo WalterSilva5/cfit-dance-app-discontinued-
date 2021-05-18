@@ -14,3 +14,14 @@ $(document).ready(function () {
 $("#botao_opcoes").click(function () {
     $("#painel").fadeToggle();
 });
+
+$(function () {
+    $(".sortable").sortable({
+        update: function () {
+            $(".elemento").each(function (e, teste) {
+                console.log(teste);
+            });
+        }
+    });
+    $(".sortable").disableSelection();
+});
