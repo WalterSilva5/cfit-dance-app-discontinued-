@@ -14,7 +14,7 @@ def login_required(func):
             else:
                 raise Exception
         except:
-            return redirect("/")
+            return render(args[0], "login.html", {"msg": "FAÇA LOGIN PARA ACESSAR!"})
         else:
             return f(*args, **kwargs)
     return wrapper_login_required
@@ -31,7 +31,7 @@ def adm_required(func):
             else:
                 raise Exception
         except:
-            #return HttpResponse(args[0].session["nivel_de_acesso"])
+            # return HttpResponse(args[0].session["nivel_de_acesso"])
             return redirect("/home")
         else:
             return f(*args, **kwargs)

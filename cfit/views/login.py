@@ -8,6 +8,10 @@ from django.contrib.sessions.models import Session
 # Create your views here.
 
 
+def login(request):
+    #msg = request.GET["msg"]
+    return render(request, "login.html")
+
 def validar_usuario(usuario):
     if len(usuario) < 4:
         return HttpResponse("usuario_menor_que_4")
@@ -46,11 +50,6 @@ def efetuar_login(request):
         request.session["nivel_de_acesso"]=usr["nivel_de_acesso"]
         request.session["usuario"]=usuario
         return HttpResponse("ok")
-
-
-def login(request):
-    return render(request, "erro.html")
-
 
 def erro(request):
     return render(request, "erro.html")

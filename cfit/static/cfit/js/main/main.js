@@ -12,3 +12,6 @@ app.mount("#app");
 $(document).ready(
     $("#ano").text(new Date().getFullYear())
 )
+$("#botao_opcoes").click(function () {
+    $("#painel").fadeToggle();
+});

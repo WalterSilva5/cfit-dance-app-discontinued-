@@ -1,0 +1,38 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="w3-white rounded">
+    <div class="row container col-6 ">
+        <div class="container m-2">
+            <form class=" border w3-border-deep-purple mx-2 rounded" method="post"
+                action="{% url 'cfit_admin_playlists_aulas_editar_salvar'  %}">
+                {% csrf_token %}
+                <input type="text" hidden name="edit_video_playlist_id" value="{{video.playlist_id}}">
+                <input type="text" hidden name="edit_video_id" value="{{video.id}}">
+                <label for="edit_video_nome" class="h2"><b>Nome</b></label>
+                <input class="form-control form-control-lg my-2 border w3-border-deep-purple" id="edit_video_nome"
+                    name="edit_video_nome" type="text" value="{{video.nome}}">
+                <label for="edit_video_link" class="h2"><b>link</b></label>
+                <input class="form-control form-control-lg border w3-border-deep-purple" id="edit_video_link"
+                    name="edit_video_link" type="text" value="{{video.link}}">
+                <div class="d-flex justify-content-end my-2">
+                    <wsi_button class="btn btn-lg w3-deep-purple w3-hover-green">SALVAR</wsi_button>
+                </div>
+            </form>
+            <div class="container row">
+                <form action="{% url 'cfit_admin_playlists_aulas_excluir'  %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" hidden name="edit_video_playlist_id" value="{{video.playlist_id}}">
+                    <input type="text" hidden name="video_id" value="{{video.id}}">
+                    <div class="my-2 float-left">
+                        <wsi_button class="btn btn-lg w3-deep-purple w3-hover-green">EXCLUIR VIDEO</wsi_button>
+                    </div>
+                    <div class="container">
+                        <input class="form-check-input mx-2 mt-4" type="checkbox" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
+{% endblock%}

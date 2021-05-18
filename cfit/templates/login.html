@@ -1,0 +1,44 @@
+{% extends 'index.html' %} {% block index %} {% load static%}
+<div class="alert alert-danger" role="alert">
+    <h2 class="text-center h2"><b>{{msg}}</b></h2>
+  </div>
+
+<h1 class="text-center h1"><b>LOGIN</b></h1>
+
+<div class="row text-center justify-content-center">
+        <div class="col-sm-4 container">
+            <wsi_login class="text-light"></wsi_login>
+        </div>
+</div>
+
+<!-- modal cadastro -->
+<wsi_modal id="modal_cadastro" class="text-center">
+    <template v-slot:modal_header>
+        CADASTRO
+    </template>
+    <template v-slot:modal_body>
+        <div>
+            <form id="form_cadastro" autocomplete="off">
+                <label for="cadastro_usuario" class="p-0 float-left">Usuario <span id="cadastro_usuario_invalid"
+                        class="text-danger" style="display: none;">* PREENCHA
+                        ESSE CAMPO</span></label>
+                <input class="form-control" name="cadastro_usuario" id="cadastro_usuario" type="text">
+                <div class="my-2">
+                    <label for="cadastro_senha" class="p-0 float-left">Senha <span id="cadastro_senha_invalid"
+                            class="text-danger" style="display: none;">*
+                            PREENCHA ESSE CAMPO</span></label>
+                    <input class="form-control" name="cadastro_senha" id="cadastro_senha" type="password">
+                </div>
+                <div class="alert alert-danger my-2" id="alert_cadastro" role="alert" style="display: none;">
+                    <h3 id="alert_cadastro_msg"></h3>
+                </div>
+                <div class="alert alert-success my-2" id="cadastro_alert_sucesso" role="alert" style="display: none;">
+                    <h3>CADASTRADO COM SUCESSO!</h3>
+                </div>
+            </form>
+            <wsi_button class="w3-orange mx-1 mt-4" onclick="cadastrar_usuario()">CADASTRAR</wsi_button>
+        </div>
+    </template>
+</wsi_modal>
+<!-- end modal cadastro -->
+{% endblock %}

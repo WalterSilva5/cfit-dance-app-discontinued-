@@ -1,13 +1,14 @@
 {% extends 'main.html' %} {% block content %} {% load static%}
 <!-- navbar -->
 <div>
-    <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color: black">
+    <nav class="navbar navbar-expand-lg navbar-dark text-light"
+        style="background-color: black; border-bottom:1px solid gray;">
         <a class="navbar-brand col-sm-2">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
         <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-            aria-label="Toggle navigation">OPÇÕES
+            aria-label="Toggle navigation">MENU
         </wsi_button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mr-auto">
@@ -20,24 +21,55 @@
                     </li>
                     <li class="nav-item mx-2">
                         {% autoescape off %}
-                            {{botao_admin}}
+                        {{botao_admin}}
                         {% endautoescape %}
                     </li>
                 </ul>
             </div>
-            <a href="{% url 'logout'  %}" class="mx-3">
-                <wsi_button class="col-sm-12 w3-button w3-red my-2 mx-2"><b>SAIR</b>
-                </wsi_button>
-            </a>
+        </div>
+        <div class="col-4">
+            <div class="col-md-4 ml-auto">
+                <div>
+                    <div class="col-12 ml-auto">
+                        <wsi_button id="botao_opcoes" class="w3-black">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-4">
+                                    <img class="img-fluid" src="{% static 'cfit/img/conta.png' %}">
+                                </div>
+                            </div>
+                        </wsi_button>
+                        <div style="position:absolute;z-index: 99;">
+                            <div class="col-sm-12">
+                                <div id="painel" class="bg-dark py-2 px-2 col-lg-12 rounded"
+                                    style="display:none; z-index: max">
+                                    <div>
+                                        <div class="my-2">
+                                            <a href="{% url 'logout'  %}">
+                                                <wsi_button class="col-sm-12 w3-button w3-red"><b>OPÇÕES</b>
+                                                </wsi_button>
+                                            </a>
+                                        </div>
+                                        <div class="my-2">
+                                            <a href="{% url 'logout'  %}">
+                                                <wsi_button class="col-sm-12 w3-button w3-red"><b>SAIR</b>
+                                                </wsi_button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
 
 <h1 class="text-center"><b>PLAYLISTS</b></h1>
-
 <div class="row d-flex justify-content-center">
     {% for playlist in playlists %}
-    <a  class="col-sm-4" href="{% url 'play'  %}?playlist_nome={{playlist.nome}}">
+    <a class="col-sm-4" href="{% url 'play'  %}?playlist_nome={{playlist.nome}}">
         <div>
             <wsi_card_playlist class="shadow p-1 mx-2 my-2">
                 <template v-slot:playlist_title>

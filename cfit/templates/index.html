@@ -7,14 +7,22 @@
         </a>
         <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-            aria-label="Toggle navigation">OPÇÕES
+            aria-label="Toggle navigation">MENU
         </wsi_button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-1">
-                        <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"
-                            href="{% url 'home'  %}"><b>AULAS</b></wsi_button>
+                        <a href="/">
+                            <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"><b>INICIO</b>
+                            </wsi_button>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a href="{% url 'home'  %}">
+                            <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"><b>AULAS</b>
+                            </wsi_button>
+                        </a>
                     </li>
                     <!-- <li class="nav-item mx-1">
                         <a class="col-sm-12 w3-button w3-round font-weight-bold w3-orange my-2"
@@ -34,18 +42,12 @@
             </div>
         </div>
         <div>
-            <div class="col-sm-12  px-auto">
-                <wsi_button data-toggle="modal" id="botao_login" data-target="#modal_login"
-                    class="w3-deep-orange col-sm-12 px-auto">
-                    <div class="row d-flex justify-content-center px-5 text-center">
-                        <span style="font-size: 30px;" class="material-icons">
-                            account_circle
-                        </span>
-                    </div>
-                    <div>
-                        <h5 class="font-weight-bold">LOGIN</h5>
-                    </div>
-                </wsi_button>
+            <div class="col-2">
+                <div>
+                    <wsi_button data-toggle="modal" id="botao_login" data-target="#modal_login"
+                        class="w3-deep-orange px-auto">LOGIN
+                    </wsi_button>
+                </div>
             </div>
             <!-- modal login -->
             <wsi_modal id="modal_login" class="text-center">

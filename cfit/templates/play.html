@@ -7,7 +7,7 @@
         </a>
         <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-            aria-label="Toggle navigation">OPÇÕES
+            aria-label="Toggle navigation">MENU
         </wsi_button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <div id="options" class="mr-auto">
@@ -18,13 +18,6 @@
                             </wsi_button>
                         </a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a href="">
-                            <wsi_button class="col-sm-12 w3-button my-2"><b>MINHAS INFORMAÇÕES</b>
-                            </wsi_button>
-                        </a>
-                    </li>
-
                 </ul>
             </div>
             <a href="{% url 'logout'  %}" class="mx-3">
@@ -41,8 +34,7 @@
 <div class="container">
     <h3>{{video.nome}}</h3>
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="{{video.link}}"
-            allow="fullscreen;"></iframe>
+        <iframe src="{{video.link}}" allow="fullscreen;"></iframe>
         <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;">&nbsp;
         </div>
     </div>

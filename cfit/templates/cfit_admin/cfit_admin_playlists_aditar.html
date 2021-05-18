@@ -1,83 +1,117 @@
 {% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
-<div class="container">
-    <h1><b>PLAYLIST: {{playlist.nome}}</b></h1>
-</div>
 
-<div class="row container">
-    <div class="col-md-6 border w3-border-deep-purple rounded">
-        <div class="container">
-            <a href="{% url 'cfit_admin_playlists_adicionar_aula'  %}">
-                <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">ADICIONAR AULA
-                </wsi_button>
-            </a>
-            <form action="{% url 'cfit_admin_playlists_excluir'  %}">
-                <div class="container border w3-border-deep-purple">
-                    <input type="text" value="{{playlist.id}}" hidden name="id">
-                    <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">EXCLUIR
-                        PLAYLIST
-                    </wsi_button>
-                    <input class="form-check-input mx-2 mt-4" type="checkbox" required>
-
-                </div>
-            </form>
-        </div>
+<div class="w3-white rounded">
+    <div class="container">
+        <h1><b>PLAYLIST: {{playlist.nome}}</b></h1>
     </div>
-    <div class="border w3-border-deep-purple rounded col-md-6">
-        <div class="col-12 container">
+
+    <div class="row container">
+        <div class="col-md-6 border w3-border-deep-purple rounded">
             <div class="container">
-                <h4 class="col-12"><b>EDITAR PLAYLIST:</b></h4>
-                {% autoescape off%}
-                {{msg}}
-                {% endautoescape %}
-                <form id="form_editar_playlist" class="mx-2" autocomplete="off" method="post"
-                    action="{% url 'cfit_admin_playlists_editar_salvar'  %}">{% csrf_token %}
-                    <div class=" mt-2">
-                        <wsi_input_group_left>
-                            <template v-slot:slot_label_left>
-                                <b class="w3-deep-purple rounded p-1">NOME: </b>
-                            </template>
-                            <template v-slot:slot_input>
-                                <wsi_input value="{{playlist.nome}}" id="edit_playlist_nome" name="edit_playlist_nome"
-                                    class="form-control-lg" required></wsi_input>
-                            </template>
-                        </wsi_input_group_left>
-                    </div>
-                    <div class="">
-                        <wsi_input_group_left>
-                            <template v-slot:slot_label_left>
-                                <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
-                            </template>
-                            <template v-slot:slot_input>
-                                <wsi_input value="{{playlist.imagem}}" class="form-control-lg"
-                                    name="edit_playlist_imagem" id="edit_playlist_imagem" required></wsi_input>
-                            </template>
-                        </wsi_input_group_left>
-                        <input type="text" hidden name="edit_playlist_id" value="{{playlist.id}}">
-                        <div>
-                            <h5><b>DESCRIÇÃO:</b></h5>
-                            <textarea value="{{playlist.descricao}}" class="form-control" id="edit_playlist_descricao"
-                                name="edit_playlist_descricao" required rows=5></textarea>
-                            <div class="container mt-4 col-12">
-                                <div class="row container">
-                                    <h5 class="float-left"><b>OCULTA:</b></h5>
-                                    <select id="edit_playlist_desabilitada" name="edit_playlist_desabilitada"
-                                        class="rounded form-select form-select-lg font-weight-bold col-md-3 ml-2">
-                                        {% if playlist.desabilitada == True %}
-                                        <option value="True">SIM</option>
-                                        {% else %}
-                                        <option value="False">NÃO</option>
-                                        {% endif%}
-                                        <option value="True">SIM</option>
-                                        <option value="False">NÃO</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row-reverse my-2">
-                                <wsi_button class="w3-button w3-deep-purple" id="salvar_playlist">SALVAR</wsi_button>
-                            </div>
-                        </div>
+                <form action="{% url 'cfit_admin_playlists_excluir'  %}">
+                    <div class="container border w3-border-deep-purple">
+                        <input type="text" value="{{playlist.id}}" hidden name="id">
+                        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">EXCLUIR
+                            PLAYLIST
+                        </wsi_button>
+                        <input class="form-check-input mx-2 mt-4" type="checkbox" required>
                     </div>
                 </form>
+                <div class="container border w3-border-deep-purple">
+                    <a href="{% url 'cfit_admin_playlists_adicionar_aula'  %}">
+                        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">
+                            ADICIONAR
+                            AULA
+                        </wsi_button>
+                    </a>
+                </div>
+                <div class="container-flex border w3-border-deep-purple text-center"
+                    style="height: 320px; overflow:auto;">
+                    <h3><b>VIDEOS DA PLAYLIST</b></h3>
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">NOME</th>
+                                <th scope="col" class="col-sm-2">EDITAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for video in videos %}
+                            <tr>
+                                <td class="text-left">{{video.nome}}</td>
+                                <td>
+                                    <form action="{% url 'cfit_admin_playlists_editar_aula'  %}">
+                                        <input type="text" hidden name="edit_video_playlist_id" value="{{playlist.id}}">
+                                        <input type="text" hidden name="edit_video_id" value="{{video.id}}">
+                                        <wsi_button class="btn-sm w3-deep-purple">EDITAR</wsi_button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="border w3-border-deep-purple rounded col-md-6">
+            <div class="col-12 container">
+                <div class="container">
+                    <h4 class="col-12"><b>EDITAR PLAYLIST:</b></h4>
+                    {% autoescape off%}
+                    {{msg}}
+                    {% endautoescape %}
+                    <form id="form_editar_playlist" class="mx-2" autocomplete="off" method="post"
+                        action="{% url 'cfit_admin_playlists_editar_salvar'  %}">{% csrf_token %}
+                        <div class=" mt-2">
+                            <wsi_input_group_left>
+                                <template v-slot:slot_label_left>
+                                    <b class="w3-deep-purple rounded p-1">NOME: </b>
+                                </template>
+                                <template v-slot:slot_input>
+                                    <wsi_input value="{{playlist.nome}}" id="edit_playlist_nome"
+                                        name="edit_playlist_nome" class="form-control-lg" required></wsi_input>
+                                </template>
+                            </wsi_input_group_left>
+                        </div>
+                        <div class="">
+                            <wsi_input_group_left>
+                                <template v-slot:slot_label_left>
+                                    <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
+                                </template>
+                                <template v-slot:slot_input>
+                                    <wsi_input value="{{playlist.imagem}}" class="form-control-lg"
+                                        name="edit_playlist_imagem" id="edit_playlist_imagem" required></wsi_input>
+                                </template>
+                            </wsi_input_group_left>
+                            <input type="text" hidden name="edit_playlist_id" value="{{playlist.id}}">
+                            <div>
+                                <h5><b>DESCRIÇÃO:</b></h5>
+                                <textarea value="{{playlist.descricao}}" class="form-control"
+                                    id="edit_playlist_descricao" name="edit_playlist_descricao" required
+                                    rows=5></textarea>
+                                <div class="container mt-4 col-12">
+                                    <div class="row container">
+                                        <h5 class="float-left"><b>OCULTA:</b></h5>
+                                        <select id="edit_playlist_desabilitada" name="edit_playlist_desabilitada"
+                                            class="rounded form-select form-select-lg font-weight-bold col-md-3 ml-2">
+                                            {% if playlist.desabilitada == True %}
+                                            <option value="True">SIM</option>
+                                            {% else %}
+                                            <option value="False">NÃO</option>
+                                            {% endif%}
+                                            <option value="True">SIM</option>
+                                            <option value="False">NÃO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row-reverse my-2">
+                                    <wsi_button class="w3-button w3-deep-purple" id="salvar_playlist">SALVAR
+                                    </wsi_button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
