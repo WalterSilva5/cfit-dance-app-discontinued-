@@ -23,7 +23,7 @@ class Playlist(models.Model):
     #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
     
 class Video(models.Model):
-    nome = models.CharField('nome', max_length=255, unique=True)
+    nome = models.CharField('nome', max_length=255, null=False, default="")
     posicao = models.IntegerField('posicao', null=False, default=0)
     playlist_id = models.IntegerField('playlist_id', null=False)
     #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)

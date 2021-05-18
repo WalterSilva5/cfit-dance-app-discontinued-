@@ -32,10 +32,11 @@ def cfit_admin_playlists_cadastrar(request):
 
 
 @adm_required
-def cfit_admin_playlists_aditar(request):
+def cfit_admin_playlists_aditar(request, msg=None):
     playlist = list(Playlist.objects.filter(
         nome=request.GET["playlist"]).values())[0]
-    return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist})
+
+    return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
 
 
 @adm_required
@@ -49,11 +50,12 @@ def cfit_admin_playlists_editar_salvar(request):
         playlist.save()
         playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
     except Exception as e:
-        msg=f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"
+        msg = f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"
         return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
     else:
-        msg=f"<h4 class='alert alert-success'>SUCESSO</h4>"
+        msg = f"<h4 class='alert alert-success'>SUCESSO</h4>"
         return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
+
 
 @adm_required
 def cfit_admin_playlists_adicionar_aula(request):
@@ -63,14 +65,15 @@ def cfit_admin_playlists_adicionar_aula(request):
 
 @adm_required
 def cfit_admin_playlists_adicionar_aula_adicionar(request):
+    playlists = list(Playlist.objects.all().values())
     try:
         nome = request.POST["nome_do_video"].upper()
         link = request.POST["link_do_video"].split("view")[0]+"preview"
         playlist_id = request.POST["select_id_da_playlist"]
         posicao = 0
         video = Video(nome=nome, link=link,
-                      playlist_id=playlist_id, posicao=posicao)
+            playlist_id=playlist_id, posicao=posicao)
         video.save()
-        return redirect("cfit_admin_playlists", {"erro": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
     except Exception as e:
-        return redirect("cfit_admin_playlists", {"erro": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
+        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlists": playlists, "msg": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
