@@ -20,10 +20,42 @@
                     </li>
                 </ul>
             </div>
-            <a href="{% url 'logout'  %}" class="mx-3">
-                <wsi_button class="col-sm-12 w3-button w3-red my-2 mx-2"><b>SAIR</b>
-                </wsi_button>
-            </a>
+            <div class="col-4">
+                <div class="col-md-4 ml-auto">
+                    <div>
+                        <div class="col-12 ml-auto">
+                            <wsi_button id="botao_opcoes" class="w3-black">
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-4">
+                                        <img class="img-fluid" src="{% static 'cfit/img/conta.png' %}">
+                                    </div>
+                                </div>
+                            </wsi_button>
+                            <div style="position:absolute;z-index: 99;">
+                                <div class="col-sm-12">
+                                    <div id="painel" class="bg-dark py-2 px-2 col-lg-12 rounded"
+                                        style="display:none; z-index: max">
+                                        <div>
+                                            <div class="my-2">
+                                                <a href="{% url 'logout'  %}">
+                                                    <wsi_button class="col-sm-12 w3-button w3-red"><b>OPÇÕES</b>
+                                                    </wsi_button>
+                                                </a>
+                                            </div>
+                                            <div class="my-2">
+                                                <a href="{% url 'logout'  %}">
+                                                    <wsi_button class="col-sm-12 w3-button w3-red"><b>SAIR</b>
+                                                    </wsi_button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </div>
