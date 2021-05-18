@@ -14,6 +14,7 @@ urlpatterns = [
     path(r'cfit_admin/', cfit_admin, name="cfit_admin"),
     path(r'cfit_admin/cfit_admin_playlists/', cfit_admin_playlists, name="cfit_admin_playlists"),
     path(r'cfit_admin/cfit_admin_playlists/cadastrar/', cfit_admin_playlists_cadastrar, name="cfit_admin_playlists_cadastrar"),
+    path(r'cfit_admin/cfit_admin_playlists/excluir/', cfit_admin_playlists_excluir, name="cfit_admin_playlists_excluir"),
     path(r'cfit_admin/cfit_admin_playlists_aditar/', cfit_admin_playlists_aditar, name="cfit_admin_playlists_aditar"),
     path(r'cfit_admin/cfit_admin_playlists_editar_salvar/', cfit_admin_playlists_editar_salvar, name="cfit_admin_playlists_editar_salvar"),
     path(r'cfit_admin/cfit_admin_playlists_adicionar_aula/', cfit_admin_playlists_adicionar_aula, name="cfit_admin_playlists_adicionar_aula"),

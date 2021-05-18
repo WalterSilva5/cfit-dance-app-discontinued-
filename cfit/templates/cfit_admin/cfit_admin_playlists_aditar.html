@@ -10,6 +10,16 @@
                 <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">ADICIONAR AULA
                 </wsi_button>
             </a>
+            <form action="{% url 'cfit_admin_playlists_excluir'  %}">
+                <div class="container border w3-border-deep-purple">
+                    <input type="text" value="{{playlist.id}}" hidden name="id">
+                    <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">EXCLUIR
+                        PLAYLIST
+                    </wsi_button>
+                    <input class="form-check-input mx-2 mt-4" type="checkbox" required>
+
+                </div>
+            </form>
         </div>
     </div>
     <div class="border w3-border-deep-purple rounded col-md-6">
