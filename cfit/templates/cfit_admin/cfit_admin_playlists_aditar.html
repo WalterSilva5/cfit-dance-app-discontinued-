@@ -1,6 +1,6 @@
 {% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
 
-<div class="w3-white rounded">
+<div class="cfit-div-dark-admin rounded">
     <div class="container">
         <h1><b>PLAYLIST: {{playlist.nome}}</b></h1>
     </div>
@@ -11,15 +11,15 @@
                 <form action="{% url 'cfit_admin_playlists_excluir'  %}">
                     <div class="container border w3-border-deep-purple">
                         <input type="text" value="{{playlist.id}}" hidden name="id">
-                        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">EXCLUIR
+                        <wsi_button class="w3-button cfit-button-admin mx-2 my-2 col-md-8" id="button_playlists_existentes">EXCLUIR
                             PLAYLIST
                         </wsi_button>
-                        <input class="form-check-input mx-2 mt-4" type="checkbox" required>
+                        <input class="form-check-input float-left ml-4 mt-4" style="width:20px; height:20px;" type="checkbox" required>
                     </div>
                 </form>
                 <div class="container border w3-border-deep-purple">
                     <a href="{% url 'cfit_admin_playlists_adicionar_aula'  %}">
-                        <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">
+                        <wsi_button class="w3-button cfit-button-admin col-md-8 mx-2 my-2" id="button_playlists_existentes">
                             ADICIONAR
                             AULA
                         </wsi_button>
@@ -28,7 +28,7 @@
                 <div class="container-flex border w3-border-deep-purple text-center"
                     style="height: 320px; overflow:auto;">
                     <h3><b>VIDEOS DA PLAYLIST</b></h3>
-                    <table class="table table-striped table-bordered table-hover table-responsive">
+                    <table class="table table-dark table-bordered table-hover table-responsive cfit-div-dark-admin">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" class="col-sm-10">NOME</th>
@@ -42,12 +42,13 @@
                             {% for video in videos %}
                             <tr>
                                 <td class="text-left" id="{{video.id}}">
-                                    <p class="elemento">{{video.nome}}||{{video.id}}||{{video.posicao}}</p>
+                                    <p class="elemento">{{video.nome}}</p>
+                                    <!-- ||{{video.id}}||{{video.posicao}} -->
                                 <td>
                                     <form action="{% url 'cfit_admin_playlists_editar_aula'  %}">
                                         <input type="text" hidden name="edit_video_playlist_id" value="{{playlist.id}}">
                                         <input type="text" hidden name="edit_video_id" value="{{video.id}}">
-                                        <wsi_button class="btn-sm w3-deep-purple">EDITAR</wsi_button>
+                                        <wsi_button class="cfit-button-admin">EDITAR</wsi_button>
                                     </form>
                                 </td>
                             </tr>
@@ -69,7 +70,7 @@
                         <div class=" mt-2">
                             <wsi_input_group_left>
                                 <template v-slot:slot_label_left>
-                                    <b class="w3-deep-purple rounded p-1">NOME: </b>
+                                    <b class="w3-deep-purple p-2">NOME: </b>
                                 </template>
                                 <template v-slot:slot_input>
                                     <wsi_input value="{{playlist.nome}}" id="edit_playlist_nome"
@@ -80,7 +81,7 @@
                         <div class="">
                             <wsi_input_group_left>
                                 <template v-slot:slot_label_left>
-                                    <b class="w3-deep-purple rounded p-1">IMAGEM</b>
+                                    <b class="w3-deep-purple p-2">IMAGEM</b>
                                 </template>
                                 <template v-slot:slot_input>
                                     <wsi_input value="{{playlist.imagem}}" class="form-control-lg"
@@ -109,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row-reverse my-2">
-                                    <wsi_button class="w3-button w3-deep-purple" id="salvar_playlist">SALVAR
+                                    <wsi_button class="w3-button cfit-button-admin" style="background-color: rgba(90, 0, 90, 0.76);" id="salvar_playlist">SALVAR
                                     </wsi_button>
                                 </div>
                             </div>

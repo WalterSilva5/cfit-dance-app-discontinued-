@@ -10,7 +10,7 @@ from cfit.models import Playlist, Video
 def home(request):
     data = {"playlists": list(Playlist.objects.filter(desabilitada=False).values())}    
     if request.session["nivel_de_acesso"] == 2:
-        data["botao_admin"] = "<a href='/cfit_admin'><wsi_button class='w3-deep-purple my-2'>PAINEL ADMINISTRATIVO</wsi_button></a>"
+        data["botao_admin"] = "<a href='/cfit_admin'><wsi_button class='cfit-button-admin my-2'>PAINEL ADMINISTRATIVO</wsi_button></a>"
    
 
     return render(request, 'home.html', data)

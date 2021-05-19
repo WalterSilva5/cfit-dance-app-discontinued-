@@ -1,91 +1,97 @@
 {% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
-<div class="w3-white rounded">
-    <div class="row container">
-        <div class="w3-white rounded">
-            <div class="container">
-                <h1><b>CFIT ADMIN PLAYLISTS</b></h1>
-            </div>
-            <div class="container">
-                <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_playlists_existentes">PLAYLISTS EXISTENTES
-                </wsi_button>
-                <wsi_button class="w3-button w3-deep-purple mx-2 my-2" id="button_adicionar_nova">ADICIONAR NOVA
-                </wsi_button>
-                <div class="row container">
-                    {% autoescape off %}
-                    {{msg}}
-                    {% endautoescape %}
+<div class="cfit-div-dark-admin rounded container">
+    <div class="container">
+        <h1><b>CFIT ADMIN PLAYLISTS</b></h1>
+    </div>
+    <div>
+        <div class="">
+            <div class="cfit-div-dark-admin rounded">
+                <div>
+                    <wsi_button class="cfit-button-admin mx-2 my-2 col-md-4" id="button_playlists_existentes">PLAYLISTS
+                        EXISTENTES
+                    </wsi_button>
+                    <wsi_button class="cfit-button-admin mx-2 my-2 col-md-4" id="button_adicionar_nova">ADICIONAR NOVA
+                    </wsi_button>
+                    <div class="row container">
+                        {% autoescape off %}
+                        {{msg}}
+                        {% endautoescape %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container w3-white rounded">
-        <div id="painel_criar_playlists" style="display: none;">
-            <p class="col-12"><b>ADICIONAR NOVA PLAYLISTS:</b></p>
-            <form id="form_criar_playlist" autocomplete="off" method="post"
-                action="{% url 'cfit_admin_playlists_cadastrar'  %}" enctype="multipart/form-data">
-                <div class="row mt-2">
-                    <div class="col-sm-6">
-                        <wsi_input_group_left>
-                            <template v-slot:slot_label_left>
-                                <b class="w3-deep-purple rounded p-1">NOME: </b>
-                            </template>
-                            <template v-slot:slot_input>
-                                <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome" class="form-control-lg"
-                                    required></wsi_input>
-                            </template>
-                        </wsi_input_group_left>
+    <div>
+        <div class="container cfit-div-dark-admin rounded">
+            <div id="painel_criar_playlists" style="display: none;">
+                <p class="col-12"><b>ADICIONAR NOVA PLAYLISTS:</b></p>
+                <form id="form_criar_playlist" autocomplete="off" method="post"
+                    action="{% url 'cfit_admin_playlists_cadastrar'  %}" enctype="multipart/form-data">
+                    <div class="row mt-2">
+                        <div class="col-sm-6">
+                            <wsi_input_group_left>
+                                <template v-slot:slot_label_left>
+                                    <b class="w3-deep-purple rounded p-1">NOME: </b>
+                                </template>
+                                <template v-slot:slot_input>
+                                    <wsi_input id="cadastro_playlist_nome" name="cadastro_playlist_nome"
+                                        class="form-control-lg" required></wsi_input>
+                                </template>
+                            </wsi_input_group_left>
+                        </div>
+                        <div class="col-sm-6">
+                            <wsi_input_group_left>
+                                <template v-slot:slot_label_left>
+                                    <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
+                                </template>
+                                <template v-slot:slot_input>
+                                    <wsi_input class="form-control-lg" name="cadastro_playlist_imagem"
+                                        id="cadastro_playlist_imagem" required></wsi_input>
+                                </template>
+                            </wsi_input_group_left>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <wsi_input_group_left>
-                            <template v-slot:slot_label_left>
-                                <b class="w3-deep-purple rounded p-1">URL DA IMAGEM: </b>
-                            </template>
-                            <template v-slot:slot_input>
-                                <wsi_input class="form-control-lg" name="cadastro_playlist_imagem"
-                                    id="cadastro_playlist_imagem" required></wsi_input>
-                            </template>
-                        </wsi_input_group_left>
+                    <h5><b>DESCRIÇÃO:</b></h5>
+                    <textarea class="form-control" id="cadastro_playlist_descricao" name="cadastro_playlist_descricao"
+                        required></textarea>
+                    <div class="d-flex flex-row-reverse my-2">
+                        <wsi_button class="cfit-button-admin col-md-4" style="background-color: rgba(90, 0, 90, 0.76);" id="salvar_playlist">SALVAR</wsi_button>
                     </div>
+                </form>
+
+            </div>
+
+            <div id="painel_listagem_playlists" class="container row-no-padding">
+                <div class="container col-sm-12 row row-no-padding" style="min-height:400px; overflow:auto;">
+                    <table class="table table-hover cfit-div-dark-admin table-responsive table-dark row-no-padding">
+                        <thead class="thead-dark  cfit-div-dark-admin ">
+                            <tr>
+                                <th class="col-sm-4">NOME</th>
+                                <th class="col-sm-8">DESCRIÇÃO</th>
+                                <th>EDITAR</th>
+                            </tr>
+                        </thead>
+                        <tbody> {% for playlist in playlists %}
+
+                            <tr class="cfit-div-dark-admin">
+                                <td class="col-4"> {{playlist.nome}}
+                                </td>
+                                <td class="col-8 text-nowrap" style=" max-width: 600px; overflow:hidden;">
+                                    {{playlist.descricao}}
+                                </td>
+                                <td>
+                                    <a href="{% url 'cfit_admin_playlists_aditar'  %}?playlist={{playlist.nome}}"
+                                        class="btn cfit-button-admin w3-text-shadow"><b>EDITAR</b></a>
+                                </td>
+                            </tr> {% endfor %}
+
+                        </tbody>
+                    </table>
                 </div>
-                <h5><b>DESCRIÇÃO:</b></h5>
-                <textarea class="form-control" id="cadastro_playlist_descricao" name="cadastro_playlist_descricao"
-                    required></textarea>
-                <div class="d-flex flex-row-reverse my-2">
-                    <wsi_button class="w3-button w3-teal" id="salvar_playlist">SALVAR</wsi_button>
-                </div>
-            </form>
-    
-        </div>
-    
-        <div id="painel_listagem_playlists">
-            <div class="container col-sm-12 row" style="min-height:400px; overflow:auto;">
-                <table class="table table-hover table-bordered table-responsive">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="col-sm-4">NOME</th>
-                            <th class="col-sm-8">DESCRIÇÃO</th>
-                            <th>EDITAR</th>
-                        </tr>
-                    </thead>
-                    {% for playlist in playlists %}
-                    <tbody>
-                        <tr>
-                            <td class="col-4"> {{playlist.nome}}
-                            </td>
-                            <td class="col-8 text-nowrap" style=" max-width: 600px; overflow:hidden;">{{playlist.descricao}}
-                            </td>
-                            <td>
-                                <a href="{% url 'cfit_admin_playlists_aditar'  %}?playlist={{playlist.nome}}"
-                                    class="w3-btn w3-hoover-red rounded w3-deep-purple  w3-text-shadow"><b>EDITAR</b></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
             </div>
         </div>
     </div>
-    
+
 </div>
 <script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
 {% endblock%}

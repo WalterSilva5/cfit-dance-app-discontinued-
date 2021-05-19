@@ -1,7 +1,8 @@
 $(document).ready(function (e) {
     $("#btn_cadastre_se").on("click", function () {
         $("#modal_login").modal("toggle")
-    })
+    });
+    $("#mapa").fadeIn(2000)
 })
 erro_cadastro = function (mensagem) {
     $("#alert_cadastro_msg").text(mensagem)

@@ -2,10 +2,10 @@
     "python.pythonPath": "env\\Scripts\\python.exe",
     "favorites.resources": [
         "cfit\\templates",
-        "cfit\\static\\cfit\\js",
         "cfit\\urls.py",
         "cfit\\views",
-        "cfit\\templates\\cfit_admin"
+        "cfit\\templates\\cfit_admin",
+        "cfit\\static\\cfit"
     ],
     "favorites.sortOrder": "ASC"
 }

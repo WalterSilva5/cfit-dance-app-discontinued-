@@ -3,6 +3,7 @@
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    margin:0;
 }
 
 [class*="col-"],
@@ -11,8 +12,67 @@
     /* Elements whose class attribute contains the substring "col-" */
     padding-left: 0;
     padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+[class="container"],
+[class="container"] {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .cfit-border-orange {
-    border: 3px solid rgba(255, 174, 0, 0.082);
+    border: 1px solid rgba(255, 174, 0, 0.082);
+}
+
+.cfit-button {
+    background-color: rgba(255, 175, 28, 0.171);
+    border: 1px solid rgba(255, 166, 1, 0.397);
+    color: rgb(255, 221, 148);
+    font-weight: bold;
+}
+
+.cfit-button:hover {
+    background-color: rgb(65, 185, 255);
+    color: rgb(255, 255, 255);
+}
+
+.cfit-button-admin {
+    color: rgb(237, 211, 255);
+    background-color: rgba(90, 0, 90, 0.342);
+    border: 1px solid rgba(189, 1, 189, 0.322);
+    width: 100%;
+}
+
+.cfit-button-admin:hover {
+    background-color: rgb(65, 185, 255);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgba(92, 1, 1, 0.692);
+}
+
+.cfit-div-dark {
+    color: white;
+    background-color: rgba(255, 185, 110, 0.082);
+    border: 1px solid rgba(83, 53, 0, 0.308);
+}
+
+.cfit-div-dark:hover {
+    border: 1px solid rgba(160, 101, 0, 0.342);
+    background-color: rgba(255, 185, 110, 0.099);
+}
+
+
+
+
+.cfit-div-dark-admin,
+table,
+td,
+tr,
+th,
+table.table-bordered>thead>tr>th {
+    color: white;
+    background-color: rgb(2, 1, 0);
+    border: 1px solid rgba(56, 0, 94, 0.753);
 }

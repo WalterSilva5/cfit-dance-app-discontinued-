@@ -5,7 +5,7 @@
         <a class="navbar-brand col-sm-2" href="/">
             <img class="img-fluid mr-0" src="{% static 'cfit/img/logo.png' %}" alt="logo" />
         </a>
-        <wsi_button class="navbar-toggler w3-button w3-round w3-orange py-4" type="button" data-toggle="collapse"
+        <wsi_button class="navbar-toggler py-3 w3-orange cfit-button col-sm-12" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
             aria-label="Toggle navigation">MENU
         </wsi_button>
@@ -14,13 +14,13 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-1">
                         <a href="/">
-                            <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"><b>INICIO</b>
+                            <wsi_button class="col-sm-12 cfit-button my-2"><b>INICIO</b>
                             </wsi_button>
                         </a>
                     </li>
                     <li class="nav-item mx-1">
                         <a href="{% url 'home'  %}">
-                            <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"><b>AULAS</b>
+                            <wsi_button class="col-sm-12 cfit-button my-2"><b>AULAS</b>
                             </wsi_button>
                         </a>
                     </li>
@@ -30,22 +30,22 @@
                     </li> -->
                     <li class="nav-item mx-1">
                         <a href="/#contatos ">
-                            <wsi_button class="col-sm-12 w3-orange my-2" style="filter: sepia(35%);"><b>CONTATOS</b>
+                            <wsi_button class="col-sm-12 my-2 cfit-button"><b>CONTATOS</b>
                             </wsi_button>
                         </a>
                     </li>
                     <li class="nav-item mx-1">
-                        <wsi_button class="col-sm-12 my-2" style="filter: sepia(35%);" data-target="#modal_cadastro"
+                        <wsi_button class="col-sm-12 my-2 cfit-button" data-target="#modal_cadastro"
                             data-toggle="modal"><b>CADASTRE-SE</b></wsi_button>
                     </li>
                 </ul>
             </div>
         </div>
         <div>
-            <div class="col-2">
-                <div>
+            <div class="col-md-4">
+                <div class="col-sm-1">
                     <wsi_button data-toggle="modal" id="botao_login" data-target="#modal_login"
-                        class="w3-deep-orange px-auto">LOGIN
+                        class="cfit-button w3-orange pr-5"><b>LOGIN</b> <span><img class="col-1 img-fluid" src="{% static 'cfit/img/conta.png' %}" alt=""></span>
                     </wsi_button>
                 </div>
             </div>
