@@ -6,5 +6,6 @@
         "cfit\\urls.py",
         "cfit\\views",
         "cfit\\templates\\cfit_admin"
-    ]
+    ],
+    "favorites.sortOrder": "ASC"
 }

@@ -10,18 +10,19 @@ $(document).ready(function () {
     app.component('wsi_video_player_iframe', comps.WsiVideoPlayerIframe)
     app.mount("#app");
     $("#ano").text(new Date().getFullYear());
-})
-$("#botao_opcoes").click(function () {
-    $("#painel").fadeToggle();
-});
-
-$(function () {
-    $(".sortable").sortable({
-        update: function () {
-            $(".elemento").each(function (e, teste) {
-                console.log(teste);
-            });
-        }
+    $("#botao_opcoes").click(function () {
+        $("#painel").fadeToggle();
     });
-    $(".sortable").disableSelection();
-});
+
+    $(function () {
+        $(".sortable").sortable({
+            update: function () {
+                $(".elemento").each(function (e, teste) {
+                    console.log(teste);
+                });
+            }
+        });
+        $(".sortable").disableSelection();
+    });
+
+})
