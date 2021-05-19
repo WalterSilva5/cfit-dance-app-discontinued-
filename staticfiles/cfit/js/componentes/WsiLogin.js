@@ -4,16 +4,16 @@ const WsiLogin = {
         <div class="container mx-2 cfit-div-dark rounded">
             <div class="col-12 py-4">
                 <form id="form-login" autocomplete="off" class="container">
-                    <label for="login_usuario" class="p-0 float-left font-weight-bold">Usuario <span class="text-danger"
-                            id="login_usuario_invalid" style="display:none">* CAMPO OBRIGATORIO!</span></label>
+                    <label for="login_usuario" class="p-0 float-left font-weight-bold">Usuario <span class="text-danger login_usuario_invalid"
+                        style="display:none">* CAMPO OBRIGATORIO!</span></label>
                     <input class="form-control form-control-lg" name="login_usuario" id="login_usuario" type="text" v-model="login_usuario" v-bind:value>
                     <div class="my-2">
-                        <label for="login_senha" class="p-0 float-left font-weight-bold"><b>Senha</b><span class="text-danger"
-                                id="login_senha_invalid" style="display:none">* CAMPO OBRIGATORIO</span></label>
-                        <input class="form-control form-control-lg" name="login_senha" id="login_senha" type="password">
+                        <label for="login_senha" class=" p-0 float-left font-weight-bold"><b>Senha</b><span class="login_senha_invalid text-danger"
+                                style="display:none">* CAMPO OBRIGATORIO</span></label>
+                        <input class="form-control form-control-lg login_senha" name="login_senha" id="login_senha" type="password">
                     </div>
-                    <div class="alert alert-danger my-2" id="login_alert" role="alert" style="display: none;">
-                        <h3 id="login_alert_msg"></h3>
+                    <div class="alert alert-danger my-2 login_alert" role="alert" style="display: none;">
+                        <h3 class="login_alert_msg"></h3>
                     </div>
                 </form>
                 <wsi_button class="mx-1 mt-4 w3-xlarge col-8 w3-orange" v-on:click="efetuar_login">LOGIN</wsi_button>
@@ -45,20 +45,20 @@ const WsiLogin = {
     methods: {
         efetuar_login: function () {
             let login_erro = function (mensagem) {
-                $("#login_alert_msg").text(mensagem)
-                $("#login_alert").show()
+                $(".login_alert_msg").text(mensagem)
+                $(".login_alert").show()
             };
             let login_senha = $("#login_senha").val()
             if (this.login_usuario == "") {
-                $("#login_usuario_invalid").show()
+                $(".login_usuario_invalid").show()
             } else {
-                $("#login_usuario_invalid").hide()
+                $(".login_usuario_invalid").hide()
 
             }
             if (login_senha == "") {
-                $("#login_senha_invalid").show()
+                $(".login_senha_invalid").show()
             } else {
-                $("#login_senha_invalid").hide()
+                $(".login_senha_invalid").hide()
             }
             console.log(login_senha)
             if (this.login_usuario != "" && login_senha != "") {
