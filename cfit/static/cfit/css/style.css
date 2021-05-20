@@ -68,6 +68,15 @@ a:link {
     background-color: rgba(255, 185, 110, 0.099);
 }
 
+.cfit-div-dark-admin input, 
+.cfit-div-dark-admin input:active, 
+.cfit-div-dark-admin input:focus,
+.cfit-div-dark-admin textarea{
+    color:rgb(0, 0, 0);
+    border: 1px solid purple;
+    background-color: rgb(173, 173, 173);
+}
+
 .cfit-div-dark-admin,
 table,
 td,
@@ -91,7 +100,7 @@ table.table-bordered>thead>tr>th {
     animation-duration: 2s;
 }
 
-.cfit-card:hover{
+.cfit-card:hover {
     box-shadow: 0 0 0;
     background-color: rgb(255, 241, 232);
     transition: 3s;
@@ -101,10 +110,12 @@ table.table-bordered>thead>tr>th {
 .cfit-card img {
     box-shadow: 5px 5px 15px rgb(0, 0, 0);
     width: 95%;
+    transition: 1.2s ease;
+
 }
 
 .cfit-card img:hover {
-    width:100%;
+    width: 100%;
     margin-bottom: 1%;
     margin-top: 1%;
     transition: 1.2s ease;
