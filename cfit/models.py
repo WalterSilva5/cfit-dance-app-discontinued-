@@ -33,4 +33,7 @@ class Mensagem(models.Model):
     nome = models.CharField('nome', max_length=255, null=False, default="")
     mensagem = models.CharField('mensagem', max_length=255, null=False, default="")
     tipo = models.IntegerField('tipo', null=False, default=0)
-    
+
+class Config(models.Model):
+    index_video = models.CharField('index_video', max_length=255, null=False, default="")
+    index_banner = models.CharField('index_video', max_length=255, null=False, default="")

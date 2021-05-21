@@ -3,23 +3,26 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from cfit.sessionTester import login_required
 from cfit.sessionTester import adm_required
-from cfit.models import Playlist, Usuario, Video
-
+from cfit.models import *
 
 @adm_required
 def cfit_admin(request):
     return render(request, 'cfit_admin/cfit_admin.html')
 
 
+# USUARIOS
 @adm_required
 def cfit_admin_usuarios(request):
-    usuarios = list(Usuario.objects.all().order_by("-nivel_de_acesso").values())
+    usuarios = list(Usuario.objects.all().order_by(
+        "-nivel_de_acesso").values())
     return render(request, 'cfit_admin/cfit_admin_usuarios.html', {"usuarios": usuarios})
+
 
 @adm_required
 def cfit_admin_usuarios_editar(request):
-    usuario = list(Usuario.objects.filter(id = request.POST["id"]).values())[0]
+    usuario = list(Usuario.objects.filter(id=request.POST["id"]).values())[0]
     return render(request, 'cfit_admin/cfit_admin_usuarios_editar.html', {"usuario": usuario})
+
 
 @adm_required
 def cfit_admin_usuarios_editar_salvar(request):
@@ -27,13 +30,15 @@ def cfit_admin_usuarios_editar_salvar(request):
     usuario.bloqueado = request.POST["bloqueado"]
     usuario.nivel_de_acesso = request.POST["adm"]
     usuario.save()
-    usuario = list(Usuario.objects.filter(id = request.POST["id"]).values())[0]
-    return render(request, 'cfit_admin/cfit_admin_usuarios_editar.html', {"usuario": usuario, "msg":"<h4 class='alert alert-success'>SUCESSO</h4>"})
+    usuario = list(Usuario.objects.filter(id=request.POST["id"]).values())[0]
+    return render(request, 'cfit_admin/cfit_admin_usuarios_editar.html', {"usuario": usuario, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
 
+
+# PLAYLISTS
 @adm_required
 def cfit_admin_playlists(request, kwargs=""):
     playlists = Playlist.objects.all().values()
-    return render(request, 'cfit_admin/cfit_admin_playlists.html', {"playlists": playlists})
+    return render(request, 'cfit_admin/playlists/playlists.html', {"playlists": playlists})
 
 
 @adm_required
@@ -46,9 +51,9 @@ def cfit_admin_playlists_cadastrar(request):
         descricao = request.POST["cadastro_playlist_descricao"].upper()
         playlist = Playlist(nome=nome, imagem=imagem, descricao=descricao)
         playlist.save()
-        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlist": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+        return render(request, "cfit_admin/playlists/playlists.html", {"playlist": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
     except Exception as e:
-        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlist": playlists, "msg": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
+        return render(request, "cfit_admin/playlists/playlists.html", {"playlist": playlists, "msg": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
 
 
 @adm_required
@@ -57,7 +62,7 @@ def cfit_admin_playlists_aditar(request, msg=""):
         nome=request.GET["playlist"]).values()[0]
     videos = Video.objects.filter(
         playlist_id=playlist["id"]).values()
-    return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"videos": videos, "playlist": playlist, "msg": msg})
+    return render(request, "cfit_admin/playlists/aditar.html", {"videos": videos, "playlist": playlist, "msg": msg})
 
 
 @adm_required
@@ -66,7 +71,7 @@ def cfit_admin_playlists_excluir(request, msg=""):
     Video.objects.filter(playlist_id=request.GET["id"]).delete()
     playlists = Playlist.objects.all().values()
 
-    return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+    return render(request, "cfit_admin/playlists/playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
 
 
 @ adm_required
@@ -81,16 +86,16 @@ def cfit_admin_playlists_editar_salvar(request):
         playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
     except Exception as e:
         msg = f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"
-        return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
+        return render(request, "cfit_admin/playlists/aditar.html", {"playlist": playlist, "msg": msg})
     else:
         msg = f"<h4 class='alert alert-success'>SUCESSO</h4>"
-        return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "msg": msg})
+        return render(request, "cfit_admin/playlists/aditar.html", {"playlist": playlist, "msg": msg})
 
 
 @ adm_required
 def cfit_admin_playlists_adicionar_aula(request):
     playlists = Playlist.objects.all().values()
-    return render(request, "cfit_admin/cfit_admin_playlists_adicionar_aula.html", {"playlists": playlists})
+    return render(request, "cfit_admin/playlists/adicionar_aula.html", {"playlists": playlists})
 
 
 @ adm_required
@@ -104,9 +109,9 @@ def cfit_admin_playlists_adicionar_aula_adicionar(request):
         video = Video(nome=nome, link=link,
                       playlist_id=playlist_id, posicao=posicao)
         video.save()
-        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+        return render(request, "cfit_admin/playlists/playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
     except Exception as e:
-        return render(request, "cfit_admin/cfit_admin_playlists.html", {"playlists": playlists, "msg": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
+        return render(request, "cfit_admin/playlists/playlists.html", {"playlists": playlists, "msg": f"<h4 class='alert alert-danger'>ERRO: ${e}</h4>"})
 
 
 @ adm_required
@@ -114,7 +119,7 @@ def cfit_admin_playlists_editar_aula(request):
     playlist = Playlist.objects.filter(
         id=request.GET["edit_video_playlist_id"])
     video = Video.objects.filter(id=request.GET["edit_video_id"]).values()[0]
-    return render(request, "cfit_admin/cfit_admin_playlists_aulas_editar.html", {"video": video})
+    return render(request, "cfit_admin/playlists/aulas_editar.html", {"video": video})
 
 
 @ adm_required
@@ -128,7 +133,8 @@ def cfit_admin_playlists_aulas_editar_salvar(request):
     video.save()
     videos = Video.objects.filter(
         playlist_id=request.POST["edit_video_playlist_id"]).values()
-    return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "videos": videos, "msg": "SUCESSO"})
+    return render(request, "cfit_admin/playlists/aditar.html", {"playlist": playlist, "videos": videos, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+
 
 @adm_required
 def cfit_admin_playlists_aulas_excluir(request):
@@ -137,4 +143,26 @@ def cfit_admin_playlists_aulas_excluir(request):
         id=request.POST["edit_video_playlist_id"]).values()[0]
     videos = Video.objects.filter(
         playlist_id=request.POST["edit_video_playlist_id"]).values()
-    return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "videos": videos, "msg": "SUCESSO"})
+    return render(request, "cfit_admin/playlists/aditar.html", {"playlist": playlist, "videos": videos, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
+
+
+# MENSAGENS
+def cfit_admin_mensagens(request):
+    mensagens = list(Mensagem.objects.all().values())
+    return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
+
+def cfit_admin_mensagens_excluir(request):
+    Mensagem.objects.filter(id=request.GET["id"]).delete()
+    mensagens = list(Mensagem.objects.all().values())
+    return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
+
+def cfit_admin_ajustes(request):
+    config=Config.objects.all().values()[0]
+    return render(request, 'cfit_admin/ajustes.html', {"config": config})
+
+def cfit_admin_ajustes_salvar(request):
+    config=Config.objects.get(id=1)
+    config.index_banner = request.POST["index_banner"]
+    config.index_video = request.POST["index_video"].split("/view")[0]+"/preview"
+    config.save()
+    return render(request, 'cfit_admin/ajustes.html', {"config": config, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})

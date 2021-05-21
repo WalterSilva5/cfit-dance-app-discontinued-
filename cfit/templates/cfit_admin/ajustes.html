@@ -1,0 +1,24 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="cfit-div-dark-admin rounded container">
+    <h1>AJUSTES</h1>
+</div>
+<div class="row container ">
+    <form class="container col-md-7 text-center cfit-div-dark-admin" action="{% url 'cfit_admin_ajustes_salvar'  %}"
+        method="POST">
+        {% csrf_token %}
+        {% autoescape off %} {{msg}} {% endautoescape %}
+        <div class="form-group my-4">
+            <label for="index_banner" class="h3">BANNER DA PAGINA INICIAL</label>
+            <input class="form-control" type="text" name="index_banner" value="{{config.index_banner}}">
+        </div>
+        <div class="form-group my-4">
+            <label for="index_video" class="h3">VIDEO DA PAGINA INICIAL</label>
+            <input class="form-control" type="text" name="index_video" value="{{config.index_video}}">
+        </div>
+        <wsi_button class="cfit-button-admin col-md-4 my-2">SALVAR</wsi_button>
+    </form>
+</div>
+
+
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
+{% endblock%}

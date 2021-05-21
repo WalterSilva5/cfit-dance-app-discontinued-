@@ -15,6 +15,7 @@ urlpatterns = [
     path(r'home/', home, name="home"),
     path(r'play/', play, name="play"),
     path(r'cfit_admin/', cfit_admin, name="cfit_admin"),
+    # playlists
     path(r'cfit_admin/cfit_admin_playlists/',
          cfit_admin_playlists, name="cfit_admin_playlists"),
     path(r'cfit_admin/cfit_admin_playlists/cadastrar/',
@@ -35,11 +36,21 @@ urlpatterns = [
          cfit_admin_playlists_aulas_editar_salvar, name="cfit_admin_playlists_aulas_editar_salvar"),
     path(r'cfit_admin/cfit_admin_playlists_aulas_excluir/',
          cfit_admin_playlists_aulas_excluir, name="cfit_admin_playlists_aulas_excluir"),
+    # usuarios
     path(r'cfit_admin/usuarios', cfit_admin_usuarios, name="cfit_admin_usuarios"),
     path(r'cfit_admin/cfit_admin_usuarios_editar',
          cfit_admin_usuarios_editar, name="cfit_admin_usuarios_editar"),
     path(r'cfit_admin/cfit_admin_usuarios_editar_salvar',
          cfit_admin_usuarios_editar_salvar, name="cfit_admin_usuarios_editar_salvar"),
-
+    # mensagens
+    path(r'cfit_admin/', cfit_admin, name="cfit_admin"),
+    path(r'cfit_admin/mensagens/', cfit_admin_mensagens,
+         name="cfit_admin_mensagens"),
+    path(r'cfit_admin/mensagens/excluir', cfit_admin_mensagens_excluir,
+         name="cfit_admin_mensagens_excluir"),
+    path(r'cfit_admin/ajustes', cfit_admin_ajustes,
+         name="cfit_admin_ajustes"),
+    path(r'cfit_admin/ajustes_salvar', cfit_admin_ajustes_salvar,
+         name="cfit_admin_ajustes_salvar"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,67 +1,67 @@
 {% extends 'index.html' %} {% block index %} {% load static%}
-<div class="row justify-content-center text-center w3-black" style="min-height:350px;">
-    <div class="float-left col-lg-6 w3-black">
-        <div style="min-height:350px;">
-            <img class="img-fluid" src="{% static 'cfit/img/banner.jpg' %}" alt="" style="width:100%;">
+<div class="row justify-content-center text-center w3-black d-block mb-3" style="min-height:350px;">
+    <div class="float-left col-lg-6" style="height: 385px; overflow: hidden;">
+        <div style="min-height:390px;">
+            <img class="img-fluid" src="{{config.index_banner}}" alt="">
         </div>
     </div>
-    <div class="col-lg-6 mx-0 float-left px-0" style="min-height:350px;">
+    <div class="col-lg-6 mx-0 float-left px-0" style="height:350px;">
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe src="https://drive.google.com/file/d/1zCFUE_jy85ICQzpVL3Wg8TVLgvy6radK/preview"
-                allow="fullscreen;"></iframe>
+            <iframe src="{{config.index_video}}" frameborder="0" scrolling seamless="" allowfullscreen></iframe>
             <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;">&nbsp;
             </div>
         </div>
     </div>
 </div>
 
-
-<div id="contatos" class="my-2 container w3-black rounded cfit-border-orange" style="min-height:400px;;
+<div class="container d-block mt-5">
+    <div id="contatos" class="my-2 container w3-black rounded cfit-border-orange" style="min-height:400px;;
 ">
-    <div class="row d-flex justify-content-center pt-4">
-        <p class="w3-jumbo"><b>CONTATOS</b></p>
-    </div>
-    <div class="row justify-content-center my-3 d-flex">
-        <div class="col-4">
-            <div class="col-sm-6">
-                <wsi_button class="w3-white w3-border-0 w3-black"><img class="img-fluid"
-                        src="{% static 'cfit/img/instagram.png' %}" alt=""></wsi_button>
+        <div class="row d-flex justify-content-center pt-4">
+            <p class="w3-jumbo"><b>CONTATOS</b></p>
+        </div>
+        <div class="row justify-content-center my-3 d-flex">
+            <div class="col-4">
+                <div class="col-sm-6">
+                    <wsi_button class="w3-white w3-border-0 w3-black"><img class="img-fluid"
+                            src="{% static 'cfit/img/instagram.png' %}" alt=""></wsi_button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="form_mensagem" class="col-md-6 rounded cfit-border-orange">
-            <form class="container" action="{% url 'index_msg'  %}" method="post" autocomplete="off">
-                {% csrf_token %}
-                <label for="mensagem_nome">
-                    <h5 class="font-weight-bold">SEU NOME</h5>
-                </label>
-                <wsi_input id="mensagem_nome" required name="mensagem_nome"></wsi_input>
-                <label for="mensagem_texto" class="my-2">
-                    <h5 class="font-weight-bold">MENSAGEM</h5>
-                </label>
-                <textarea class="form-control" required name="mensagem_texto" id="mensagem_texto" rows="5"></textarea>
-                {% autoescape off %}
-                {{msg}}
-                {% endautoescape %}
-                {{cp}}
-                <div class="cfit-div-dark">
-                    Responda: 
-                    <span id="v1"></span> + <span id="v2"></span> = 
-                    <input id="resposta" type="text" required
-                        style="width:40px;">
-                    <span class=" pl-2 text-danger" id="alert_mensagem" style="display: none;">* ERRO VALOR INCORRETO!</span>
+        <div class="row">
+            <div id="form_mensagem" class="col-md-6 rounded cfit-border-orange">
+                <form class="container" action="{% url 'index_msg'  %}" method="post" autocomplete="off">
+                    {% csrf_token %}
+                    <div>
+                        {% autoescape off %} {{msg}} {% endautoescape %}
+                    </div>
+                    <label for="mensagem_nome">
+                        <h5 class="font-weight-bold">SEU NOME</h5>
+                    </label>
+                    <wsi_input id="mensagem_nome" required name="mensagem_nome"></wsi_input>
+                    <label for="mensagem_texto" class="my-2">
+                        <h5 class="font-weight-bold">MENSAGEM</h5>
+                    </label>
+                    <textarea class="form-control" required name="mensagem_texto" id="mensagem_texto"
+                        rows="5"></textarea>
+                    <div class="cfit-div-dark">
+                        Responda:
+                        <span id="v1"></span> + <span id="v2"></span> =
+                        <input id="resposta" type="text" required style="width:40px;">
+                        <span class=" pl-2 text-danger" id="alert_mensagem" style="display: none;">* ERRO VALOR
+                            INCORRETO!</span>
+                    </div> 
+                    <wsi_button class="float-right my-2 w3-border-0 cfit-button w3-orange" id="button_enviar_mensagem">
+                        <h5 class="font-weight-bold">ENVIAR MENSAGEM</h5>
+                    </wsi_button>
+                </form>
+            </div>
+            <div class="col-md-6 cfit-border-orange" id="mapa" style="display:none;">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63217.82276607626!2d-38.33589005494794!3d-7.987170127351376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a7163a02243ecf%3A0x106b2cc6df8663f1!2sSerra%20Talhada%2C%20PE!5e0!3m2!1spt-BR!2sbr!4v1621251658255!5m2!1spt-BR!2sbr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <wsi_button class="float-right my-2 w3-border-0 cfit-button w3-orange" id="button_enviar_mensagem">
-                    <h5 class="font-weight-bold">ENVIAR MENSAGEM</h5>
-                </wsi_button>
-            </form>
-        </div>
-        <div class="col-md-6 cfit-border-orange" id="mapa" style="display:none;">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63217.82276607626!2d-38.33589005494794!3d-7.987170127351376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a7163a02243ecf%3A0x106b2cc6df8663f1!2sSerra%20Talhada%2C%20PE!5e0!3m2!1spt-BR!2sbr!4v1621251658255!5m2!1spt-BR!2sbr"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>

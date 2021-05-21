@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from cfit.sessionTester import not_logged_only
-from cfit.models import Mensagem
+from cfit.models import Mensagem, Config
 
 
 def index(request):
-    return render(request, 'index_deslogado.html')
+    config = Config.objects.all().values()[0]
+    return render(request, 'index_deslogado.html', {"config": config})
 
 
 def index_msg(request):
@@ -15,4 +16,5 @@ def index_msg(request):
         tipo=1
     )
     mensagem.save()
-    return render(request, "index_deslogado.html", {"msg":  "<h4 class='alert alert-success'>SUCESSO</h4>"})
+    config = Config.objects.all().values()[0]
+    return render(request, "index_deslogado.html", {"config": config, "msg":  " <h4 class='alert alert-success' > SUCESSO </h4>"})

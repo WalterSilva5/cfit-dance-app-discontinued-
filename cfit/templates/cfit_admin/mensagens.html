@@ -1,0 +1,31 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="cfit-div-dark-admin rounded container">
+    <h1>MENSAGENS</h1>
+</div>
+<table class="table table-responsive">
+    <thead>
+        <th scope="row">NOME</th>
+        <th scope="row">MENSAGEM</th>
+        <th scope="row">EXCLUIR</th>
+    </thead>
+    <tbody>
+        {% for mensagem in mensagens %}
+        <tr>
+            <td>{{mensagem.nome}}</td>
+            <td>
+                <div style="max-height: 150px; min-width: 160px; overflow: auto;">{{mensagem.mensagem}}</div>
+            </td>
+            <td>
+                <form action="{% url 'cfit_admin_mensagens_excluir'  %}">
+                    <input type="text" value="{{mensagem.id}}" name="id" hidden>
+                    <wsi_button class="btn-sm cfit-button-admin">EXCLUIR</wsi_button>
+                    <input type="checkbox" class="float-right" required style="width: 20px; height: 20px;">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_playlists.js' %}"></script>
+{% endblock%}
