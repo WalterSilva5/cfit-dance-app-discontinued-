@@ -16,5 +16,9 @@ def index_msg(request):
         tipo=1
     )
     mensagem.save()
-    config = Config.objects.all().values()[0]
-    return render(request, "index_deslogado.html", {"config": config, "msg":  " <h4 class='alert alert-success' > SUCESSO </h4>"})
+    try:
+        config = Config.objects.all().values()[0]
+    except:
+        return render(request, "index_deslogado.html")
+    else:
+        return render(request, "index_deslogado.html", {"config": config, "msg":  " <h4 class='alert alert-success' > SUCESSO </h4>"})
