@@ -44,7 +44,7 @@
         {% for video in videos %}
         <input type="text" hidden value={{video.nome}} id="{{video.id}}-titulo">
         <input type="text" hidden value={{video.link}} id="{{video.id}}-link">
-        <wsi_button class="botao_menu_player col-12 btn" id="{{video.id}}-bt">{{video.nome}}</wsi_button>
+        <wsi_button class="botao_menu_player col-12" id="{{video.id}}-bt">{{video.nome}}</wsi_button>
         {% endfor %}
     </div>
 </div>
