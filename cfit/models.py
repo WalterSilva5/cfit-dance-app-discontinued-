@@ -29,14 +29,8 @@ class Video(models.Model):
     #imagem = models.ImageField("imagem", upload_to=dir_upload(), height_field=None, width_field=None, max_length=100)
     link = models.CharField('link', max_length=255, null=False, default='')
     
-class Aparelho(models.Model):
-    nome = models.CharField('nome', max_length=255, unique=True)
-    dica = models.CharField('dica', max_length=255, null=True, default='')
-
-
-class Exercicio(models.Model):
-    nome = models.CharField('nome', max_length=255, unique=True)
-    dica = models.CharField('dica', max_length=255, null=True, default='')
-    series = models.IntegerField('series', null=True, default='')
-    duracao = models.CharField('duracao', max_length=255, null=True, default='')
-    carga = models.CharField('carga', null=True, default='', max_length=255)
+class Mensagem(models.Model):
+    nome = models.CharField('nome', max_length=255, null=False, default="")
+    mensagem = models.CharField('mensagem', max_length=255, null=False, default="")
+    tipo = models.IntegerField('tipo', null=False, default=0)
+    

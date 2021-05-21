@@ -10,9 +10,10 @@ const WsiLogin = {
                     <div class="my-2">
                         <label for="login_senha" class=" p-0 float-left font-weight-bold"><b>Senha</b><span class="login_senha_invalid text-danger"
                                 style="display:none">* CAMPO OBRIGATORIO</span></label>
-                        <input class="form-control form-control-lg login_senha" name="login_senha" id="login_senha" type="password">
+                        <input class="form-control form-control-lg login_senha" name="login_senha" id="login_senha" type="password"
+                        v-model="login_senha" v-bind:value>
                     </div>
-                    <div class="alert alert-danger my-2 login_alert" role="alert" style="display: none;">
+                    <div class="alert alert-danger my-2 login_alert" role="alert" style="display: none">
                         <h3 class="login_alert_msg"></h3>
                     </div>
                 </form>
@@ -35,11 +36,15 @@ const WsiLogin = {
     data() {
         return {
             login_usuario: "",
+            login_senha: "",
         }
     },
     watch: {
-        login_usuario(novo_texto, texto_antigo) {
-            this.login_usuario = novo_texto.toUpperCase();
+        login_usuario(novo_usuario, usuario_anterior) {
+            this.login_usuario = novo_usuario.toUpperCase()
+        },
+        login_senha(nova_senha, senha_anterior) {
+            this.login_senha = nova_senha
         }
     },
     methods: {
@@ -47,36 +52,38 @@ const WsiLogin = {
             let login_erro = function (mensagem) {
                 $(".login_alert_msg").text(mensagem)
                 $(".login_alert").show()
-            };
-            let login_senha = $("#login_senha").val()
+            }
             if (this.login_usuario == "") {
                 $(".login_usuario_invalid").show()
             } else {
                 $(".login_usuario_invalid").hide()
 
             }
-            if (login_senha == "") {
+            if (this.login_senha == "") {
                 $(".login_senha_invalid").show()
             } else {
                 $(".login_senha_invalid").hide()
             }
-            console.log(login_senha)
-            if (this.login_usuario != "" && login_senha != "") {
+            if (this.login_usuario != "" && this.login_senha != "") {
                 $.ajax({
                     type: "post",
                     url: "/login/efetuar_login/",
                     data: {
                         login_usuario: this.login_usuario,
-                        login_senha,
+                        login_senha: this.login_senha,
                     },
                     success: function (result) {
                         if (result == "ok") {
-                            $("#form-login").trigger("reset");
+                            $("#form-login").trigger("reset")
                             window.location.replace("/home")
                         } else if (result == "nao_cadastrado") {
                             login_erro("USUARIO NÃO CADASTRADO")
-                        } else if (result = "usuario_menor_que_4") {
+                        } else if (result == "usuario_menor_que_4") {
                             login_erro("USUARIO INVALIDO")
+                        } else if (result == "senha_invalida") {
+                            login_erro("VERIFIQUE SUA SENHA!")
+                        } else if (result == "conta_bloqueada") {
+                            login_erro("CONTA BLOQUEADA!")
                         } else {
                             console.log(result)
                         }
@@ -85,7 +92,7 @@ const WsiLogin = {
                         login_erro(result.statusText)
                         console.log(result)
                     }
-                });
+                })
             } else {
                 login_erro("PREENCHA TODOS OS CAMPOS")
             }
@@ -98,4 +105,4 @@ const WsiLogin = {
 
 
 
-export default WsiLogin;
+export default WsiLogin

@@ -31,16 +31,28 @@
     </div>
     <div class="row">
         <div id="form_mensagem" class="col-md-6 rounded cfit-border-orange">
-            <form class="container">
+            <form class="container" action="{% url 'index_msg'  %}" method="post" autocomplete="off">
+                {% csrf_token %}
                 <label for="mensagem_nome">
                     <h5 class="font-weight-bold">SEU NOME</h5>
                 </label>
-                <wsi_input id="mensagem_nome" name="mensagem_nome"></wsi_input>
+                <wsi_input id="mensagem_nome" required name="mensagem_nome"></wsi_input>
                 <label for="mensagem_texto" class="my-2">
                     <h5 class="font-weight-bold">MENSAGEM</h5>
                 </label>
-                <textarea class="form-control" name="mensagem_texto" id="mensagem_texto" rows="5"></textarea>
-                <wsi_button class="float-right my-2 w3-border-0 cfit-button w3-orange">
+                <textarea class="form-control" required name="mensagem_texto" id="mensagem_texto" rows="5"></textarea>
+                {% autoescape off %}
+                {{msg}}
+                {% endautoescape %}
+                {{cp}}
+                <div class="cfit-div-dark">
+                    Responda: 
+                    <span id="v1"></span> + <span id="v2"></span> = 
+                    <input id="resposta" type="text" required
+                        style="width:40px;">
+                    <span class=" pl-2 text-danger" id="alert_mensagem" style="display: none;">* ERRO VALOR INCORRETO!</span>
+                </div>
+                <wsi_button class="float-right my-2 w3-border-0 cfit-button w3-orange" id="button_enviar_mensagem">
                     <h5 class="font-weight-bold">ENVIAR MENSAGEM</h5>
                 </wsi_button>
             </form>
@@ -53,7 +65,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
+<script src="{% static 'cfit/js/index/index_deslogado.js' %}"></script>
 {% endblock %}

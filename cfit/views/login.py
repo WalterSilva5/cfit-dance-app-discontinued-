@@ -12,6 +12,7 @@ def login(request):
     #msg = request.GET["msg"]
     return render(request, "login.html")
 
+
 def validar_usuario(usuario):
     if len(usuario) < 4:
         return HttpResponse("usuario_menor_que_4")
@@ -33,23 +34,28 @@ def efetuar_login(request):
         return HttpResponse(usuario_invalido)
     senha = request.POST["login_senha"]
 
-    usr = list(Usuario.objects.filter(
-        usuario=usuario, senha=senha).values())[0]
-    if not usr:
+    try:
+        usr = list(Usuario.objects.filter(
+            usuario=usuario, senha=senha).values())[0]
+    except:
         return HttpResponse("senha_invalida")
     else:
         try:
             ses = Session.objects.all()
             for k in ses:
-                #print(k.get_decoded())
+                # print(k.get_decoded())
                 if (k.get_decoded()["usuario"] == usuario):
-                    x=Session.objects.filter(usuario=usuario)
+                    x = Session.objects.filter(usuario=usuario)
                     x.delete()
         except:
             pass
-        request.session["nivel_de_acesso"]=usr["nivel_de_acesso"]
-        request.session["usuario"]=usuario
-        return HttpResponse("ok")
+        if usr["bloqueado"] == True:
+            return HttpResponse("conta_bloqueada")
+        else:
+            request.session["nivel_de_acesso"] = usr["nivel_de_acesso"]
+            request.session["usuario"] = usuario
+            return HttpResponse("ok")
+
 
 def erro(request):
     return render(request, "erro.html")

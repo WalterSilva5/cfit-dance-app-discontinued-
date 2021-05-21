@@ -1,0 +1,49 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="cfit-div-dark-admin rounded container col-12">
+    <div class="container col-12">
+        <h1><b>CFIT ADMIN USUARIOS</b></h1>
+    </div>
+    <div class="cfit-div-dark-admin rounded container row col-12" style="overflow: auto;">
+        <table class="table cfit-div-dark-admin rounded font-weight-bold">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">USUARIO</th>
+                    <th scope="col" class="col-1">BLOQUEADO</th>
+                    <th scope="col" class="col-1">ADM</th>
+                    <th scope="col" class="col-1">EDITAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td style="overflow: auto;">{{usuario.usuario}}</td>
+                    <td>
+                        {% if usuario.bloqueado == True %}
+                            <span class="text-danger">SIM</span>
+                        {% else %}
+                            <span class="text-success">NÃO</span>
+                        {% endif %}
+                    </td>
+                    <td >
+                        {% if usuario.nivel_de_acesso == 2 %}
+                        <span class="bg-warning text-dark d-block p-1"><b>SIM</b></span>
+                        {% else %}
+                        <span><b>NÃO</b></span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="cfit_admin_usuarios_editar" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="id" value="{{usuario.id}}" hidden>
+                            <wsi_button class="btn-sm cfit-button-admin">EDITAR</wsi_button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_usuarios.js' %}"></script>
+{% endblock%}

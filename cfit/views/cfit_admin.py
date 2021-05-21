@@ -3,13 +3,32 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from cfit.sessionTester import login_required
 from cfit.sessionTester import adm_required
-from cfit.models import Playlist, Video
+from cfit.models import Playlist, Usuario, Video
 
 
 @adm_required
 def cfit_admin(request):
     return render(request, 'cfit_admin/cfit_admin.html')
 
+
+@adm_required
+def cfit_admin_usuarios(request):
+    usuarios = list(Usuario.objects.all().order_by("-nivel_de_acesso").values())
+    return render(request, 'cfit_admin/cfit_admin_usuarios.html', {"usuarios": usuarios})
+
+@adm_required
+def cfit_admin_usuarios_editar(request):
+    usuario = list(Usuario.objects.filter(id = request.POST["id"]).values())[0]
+    return render(request, 'cfit_admin/cfit_admin_usuarios_editar.html', {"usuario": usuario})
+
+@adm_required
+def cfit_admin_usuarios_editar_salvar(request):
+    usuario = Usuario.objects.get(id=request.POST["id"])
+    usuario.bloqueado = request.POST["bloqueado"]
+    usuario.nivel_de_acesso = request.POST["adm"]
+    usuario.save()
+    usuario = list(Usuario.objects.filter(id = request.POST["id"]).values())[0]
+    return render(request, 'cfit_admin/cfit_admin_usuarios_editar.html', {"usuario": usuario, "msg":"<h4 class='alert alert-success'>SUCESSO</h4>"})
 
 @adm_required
 def cfit_admin_playlists(request, kwargs=""):
@@ -111,7 +130,7 @@ def cfit_admin_playlists_aulas_editar_salvar(request):
         playlist_id=request.POST["edit_video_playlist_id"]).values()
     return render(request, "cfit_admin/cfit_admin_playlists_aditar.html", {"playlist": playlist, "videos": videos, "msg": "SUCESSO"})
 
-
+@adm_required
 def cfit_admin_playlists_aulas_excluir(request):
     Video.objects.filter(id=request.POST["video_id"]).delete()
     playlist = Playlist.objects.filter(

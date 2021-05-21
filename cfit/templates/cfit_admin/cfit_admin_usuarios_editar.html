@@ -1,0 +1,49 @@
+{% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
+<div class="cfit-div-dark-admin rounded container col-12 ml-md-4">
+    <div class="container col-12">
+        <h1><b>CFIT ADMIN EDITAR USUARIOS</b></h1>
+        <div class="container cfit-div-dark-admin ">
+            <form class="cfit-div-dark-admin rounded form col-md-6 px-3" action="cfit_admin_usuarios_editar_salvar" method="post">
+                {% csrf_token %}
+                <input type="text" hidden value="{{usuario.id}}" name="id">
+                <div class="form-group my-4">
+                    <label for="usuario" class="h4"><b>Usuario</b></label>
+                    <wsi_input id="usuario" name="usuario" disabled type="text" value="{{usuario.usuario}}"></wsi_input>
+                </div>
+                <div class="from-group my-4">
+                    <label for="bloqueado" class="h4"><b>Bloqueado</b></label>
+                    <select class="rounded p-2 col-lg-3 form-select-lg ml-4 flot-left" name="bloqueado" id="bloqueado">
+                        {% if usuario.bloqueado == True %}
+                        <option value="1">SIM</option>
+                        {% else %}
+                        <option value="0">NÃO</option>
+                        {% endif %}
+                        <option value="1">SIM</option>
+                        <option value="0">NÃO</option>
+                    </select>
+                </div>
+                <div class="from-group my-4">
+                    <label for="adm" class="h4"><b>ADM</b></label>
+                    <select class="rounded p-2 col-lg-3 form-select-lg ml-4 flot-left"  name="adm" id="adm">
+                        {% if usuario.nivel_de_acesso == 2 %}
+                        <option value="2">SIM</option>
+                        {% else %}
+                        <option value="0">NÃO</option>
+                        {% endif %}
+                        <option value="2">SIM</option>
+                        <option value="0">NÃO</option>
+                    </select>
+                </div>
+                <div class="text-center my-4">
+                    <input type="checkbox" class="form-checkbox mr-4" style="width:20px; height:20px;" required>
+                    <wsi_button class="cfit-button-admin col-md-4">SALVAR</wsi_button>
+                </div>
+                {% autoescape off%}
+                {{msg}}
+                {% endautoescape %}
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'cfit/js/cfit_admin/cfit_admin_usuarios.js' %}"></script>
+{% endblock%}

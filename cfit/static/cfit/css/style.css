@@ -6,6 +6,16 @@
     margin: 0;
 }
 
+
+body::-webkit-scrollbar-thumb {
+    background-color: orange;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid orange;
+    /* creates padding around scroll thumb */
+}
+
 a:link {
     text-decoration: none;
 }
@@ -68,11 +78,11 @@ a:link {
     background-color: rgba(255, 185, 110, 0.099);
 }
 
-.cfit-div-dark-admin input, 
-.cfit-div-dark-admin input:active, 
+.cfit-div-dark-admin input,
+.cfit-div-dark-admin input:active,
 .cfit-div-dark-admin input:focus,
-.cfit-div-dark-admin textarea{
-    color:rgb(0, 0, 0);
+.cfit-div-dark-admin textarea {
+    color: rgb(0, 0, 0);
     border: 1px solid purple;
     background-color: rgb(173, 173, 173);
 }
