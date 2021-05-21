@@ -10,7 +10,8 @@ def index(request):
     except:
         return render(request, "index_deslogado.html")
     else:
-        return render(request, "index_deslogado.html", {"config": config, "msg":  " <h4 class='alert alert-success' > SUCESSO </h4>"})
+        return render(request, "index_deslogado.html", {"config": config})
+
 
 def index_msg(request):
     mensagem = Mensagem(

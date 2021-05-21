@@ -5,6 +5,7 @@ from cfit.sessionTester import login_required
 from cfit.sessionTester import adm_required
 from cfit.models import *
 
+
 @adm_required
 def cfit_admin(request):
     return render(request, 'cfit_admin/cfit_admin.html')
@@ -74,7 +75,7 @@ def cfit_admin_playlists_excluir(request, msg=""):
     return render(request, "cfit_admin/playlists/playlists.html", {"playlists": playlists, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
 
 
-@ adm_required
+@adm_required
 def cfit_admin_playlists_editar_salvar(request):
     try:
         playlist = Playlist.objects.get(id=request.POST["edit_playlist_id"])
@@ -92,13 +93,13 @@ def cfit_admin_playlists_editar_salvar(request):
         return render(request, "cfit_admin/playlists/aditar.html", {"playlist": playlist, "msg": msg})
 
 
-@ adm_required
+@adm_required
 def cfit_admin_playlists_adicionar_aula(request):
     playlists = Playlist.objects.all().values()
     return render(request, "cfit_admin/playlists/adicionar_aula.html", {"playlists": playlists})
 
 
-@ adm_required
+@adm_required
 def cfit_admin_playlists_adicionar_aula_adicionar(request):
     playlists = Playlist.objects.all().values()
     try:
@@ -151,18 +152,26 @@ def cfit_admin_mensagens(request):
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
 
+
 def cfit_admin_mensagens_excluir(request):
     Mensagem.objects.filter(id=request.GET["id"]).delete()
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
 
+
 def cfit_admin_ajustes(request):
-    config=Config.objects.all().values()[0]
-    return render(request, 'cfit_admin/ajustes.html', {"config": config})
+    try:
+        config = Config.objects.all().values()[0]
+    except:
+        return render(request, 'cfit_admin/ajustes.html')
+    else:
+        return render(request, 'cfit_admin/ajustes.html', {"config": config})
+
 
 def cfit_admin_ajustes_salvar(request):
-    config=Config.objects.get(id=1)
+    config = Config.objects.get(id=1)
     config.index_banner = request.POST["index_banner"]
-    config.index_video = request.POST["index_video"].split("/view")[0]+"/preview"
+    config.index_video = request.POST["index_video"].split(
+        "/view")[0]+"/preview"
     config.save()
     return render(request, 'cfit_admin/ajustes.html', {"config": config, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
