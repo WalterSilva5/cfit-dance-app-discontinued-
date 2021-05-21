@@ -1,40 +1,37 @@
 {% extends 'cfit_admin/cfit_admin.html' %} {% block 'painels_admin' %} {% load static%}
-<div class="d-flex justify-content-star 'container w3-white">
-    <div>
-        <div class="container border rounded">
-            <h1><b>ADICIONAR AULA</b></h1>
-            <form autocomplete="off" action="{% url 'cfit_admin_playlists_adicionar_aula_adicionar'  %}" method="post"
-                class="container">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-12">
-                        <label class="h4" for="nome_do_video"><b>NOME</b></label>
-                        <wsi_input required class="border w3-border-deep-purple" id="nome_do_video"
-                            name="nome_do_video">
-                        </wsi_input>
-                    </div>
+<div class="d-flex justify-content-center text-center cfit-div-dark-admin">
+
+    <div class="container border rounded">
+        <h1><b>ADICIONAR AULA</b></h1>
+        <form autocomplete="off" action="{% url 'cfit_admin_playlists_adicionar_aula_adicionar'  %}" method="post"
+            class="container  col-md-6">
+            {% csrf_token %}
+            <div class="row my-5 form-select form-select-lg bg-dark d-flex justify-content-center text-center">
+                <select id="select_id_da_playlist" name="select_id_da_playlist"
+                    class="rounded form-select form-select-lg h3 text-dark" required>
+                    <option selected disabled hidden value="">ESCOLHA UMA PLAYLIST</option>
+                    {% for playlist in playlists %}
+                    <option value="{{playlist.id}}">{{playlist.nome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="h4" for="nome_do_video"><b>NOME DA AULA</b></label>
+                    <wsi_input required class="border w3-border-deep-purple" id="nome_do_video" name="nome_do_video">
+                    </wsi_input>
                 </div>
-                <div class="row">
-                    <div class=" col-12 my-3">
-                        <label class="h4" for="link_do_video"><b>LINK DO VIDEO</b></label>
-                        <wsi_input required class="border w3-border-deep-purple" id="link_do_video"
-                            name="link_do_video">
-                        </wsi_input>
-                    </div>
+            </div>
+            <div class="row">
+                <div class=" col-12 my-3">
+                    <label class="h4" for="link_do_video"><b>LINK DO VIDEO</b></label>
+                    <wsi_input required class="border w3-border-deep-purple" id="link_do_video" name="link_do_video">
+                    </wsi_input>
                 </div>
-                <div class="row form-select form-select-lg">
-                    <select id="select_id_da_playlist" name="select_id_da_playlist"
-                        class="rounded form-select form-select-lg my-3 font-weight-bold col-md-12 h5 border w3-border-deep-purple"
-                        required>
-                        <option selected disabled hidden value="">ESCOLHA UMA PLAYLIST</option>
-                        {% for playlist in playlists %}
-                        <option value="{{playlist.id}}">{{playlist.nome}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <wsi_button class="cfit-button-admin col-md-4" style="background-color: rgba(90, 0, 90, 0.76);">SALVAR</wsi_button>
-            </form>
-        </div>
+            </div>
+            <wsi_button class="cfit-button-admin col-md-6" style="background-color: rgba(90, 0, 90, 0.76);">SALVAR
+            </wsi_button>
+        </form>
     </div>
 </div>
 
