@@ -19,7 +19,6 @@ def login_required(func):
             return f(*args, **kwargs)
     return wrapper_login_required
 
-
 def adm_required(func):
     f = func
     @functools.wraps(func)

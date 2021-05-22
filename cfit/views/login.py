@@ -53,6 +53,7 @@ def efetuar_login(request):
             return HttpResponse("conta_bloqueada")
         else:
             request.session["nivel_de_acesso"] = usr["nivel_de_acesso"]
+            print(usr["nivel_de_acesso"])
             request.session["usuario"] = usuario
             return HttpResponse("ok")
 

@@ -9,7 +9,7 @@ from cfit.models import Playlist, Video
 @login_required
 def home(request):
     data = {"playlists": list(Playlist.objects.filter(desabilitada=False).values())}    
-    if request.session["nivel_de_acesso"] == 2:
+    if request.session["nivel_de_acesso"] == 95:
         data["botao_admin"] = "<a href='/cfit_admin'><wsi_button class='cfit-button-admin my-2'>PAINEL ADMINISTRATIVO</wsi_button></a>"
    
 
