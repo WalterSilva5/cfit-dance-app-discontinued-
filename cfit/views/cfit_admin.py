@@ -158,17 +158,18 @@ def cfit_admin_playlists_aulas_excluir(request):
 
 
 # MENSAGENS
+@adm_required
 def cfit_admin_mensagens(request):
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
 
-
+@adm_required
 def cfit_admin_mensagens_excluir(request):
     Mensagem.objects.filter(id=request.GET["id"]).delete()
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
 
-
+@adm_required
 def cfit_admin_ajustes(request):
     try:
         config = Config.objects.all().values()[0]
@@ -177,7 +178,7 @@ def cfit_admin_ajustes(request):
     else:
         return render(request, 'cfit_admin/ajustes.html', {"config": config})
 
-
+@adm_required
 def cfit_admin_ajustes_salvar(request):
     config = Config.objects.get(id=1)
     config.index_banner = request.POST["index_banner"]

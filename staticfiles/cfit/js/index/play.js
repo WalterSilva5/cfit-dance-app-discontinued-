@@ -4,6 +4,7 @@ $(document).ready(() => {
         $("#video__player").find("iframe").attr("src",
             $(`#${v}__link`).val()
         );
-        //$("#video__titulo").text($(`#${v}__titulo`).val())
+        $("#video__titulo").text($(`#${v}__titulo`).val())
+        $("#playlist_menu").scrollTop( $(this).position().top );
     })
 })
