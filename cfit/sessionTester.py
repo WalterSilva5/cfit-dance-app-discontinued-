@@ -22,11 +22,10 @@ def login_required(func):
 
 def adm_required(func):
     f = func
-
     @functools.wraps(func)
     def wrapper_login_required(*args, **kwargs):
         try:
-            if(args[0].session["nivel_de_acesso"] == 2):
+            if(args[0].session["nivel_de_acesso"] == 95):
                 pass
             else:
                 raise Exception
