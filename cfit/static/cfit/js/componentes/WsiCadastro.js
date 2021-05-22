@@ -55,7 +55,7 @@ const WsiCadastro = {
             }
         },
         cadastro_usuario(novo_usuario, usuario_anterior) {
-            this.cadastro_usuario = novo_usuario.toUpperCase()
+            this.cadastro_usuario = novo_usuario.toUpperCase().replace(/\s/g, '')
             if (this.cadastro_usuario.length < 6) {
                 $("#cadastro_usuario_erro").text(" *LOGIN DEVE TER NO MINIMO 5 LETRAS")
             } else {
@@ -68,7 +68,7 @@ const WsiCadastro = {
             this.cadastro_email = novo_email
         },
         cadastro_senha(nova_senha, senha_anterior) {
-            this.cadastro_senha = nova_senha
+            this.cadastro_senha = nova_senha.replace(/\s/g, '')
             var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})/;
             if (this.cadastro_senha.length < 6) {
                 $("#cadastro_senha_erro").text("* A SENHA DEVE SER MAIOR")
@@ -87,7 +87,7 @@ const WsiCadastro = {
             }
         },
         cadastro_confirme_senha(nova_confirme_senha, senha_confirme_anterior) {
-            this.cadastro_confirme_senha = nova_confirme_senha
+            this.cadastro_confirme_senha = nova_confirme_senha.replace(/\s/g, '')
             if (this.cadastro_confirme_senha != this.cadastro_senha) {
                 $("#cadastro_confirme_senha_erro").text("SENHAS NÃO CORRESPONDEM")
             } else {

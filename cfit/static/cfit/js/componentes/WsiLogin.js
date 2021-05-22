@@ -41,7 +41,7 @@ const WsiLogin = {
     },
     watch: {
         login_usuario(novo_usuario, usuario_anterior) {
-            this.login_usuario = novo_usuario.toUpperCase()
+            this.login_usuario = novo_usuario.toUpperCase().replace(/\s/g, '')
         },
         login_senha(nova_senha, senha_anterior) {
             this.login_senha = nova_senha
