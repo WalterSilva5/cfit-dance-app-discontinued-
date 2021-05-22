@@ -1,9 +1,9 @@
 $(document).ready(() => {
     $(".botao_menu_player").on("click", function () {
-        let v = (this.id.split("-")[0])
-        $(".video_player").find("iframe").attr("src",
-            $(`#${v}-link`).val()
+        let v = (this.id.split("__")[0])
+        $("#video__player").find("iframe").attr("src",
+            $(`#${v}__link`).val()
         );
-        $("#video_titulo").text($(`#${v}-titulo`).val())
+        //$("#video__titulo").text($(`#${v}__titulo`).val())
     })
 })

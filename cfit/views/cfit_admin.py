@@ -6,6 +6,15 @@ from cfit.sessionTester import adm_required
 from cfit.models import *
 
 
+def prepare_video_url(url):
+    if '/view' in url:
+        return url.split('/view')[0]+'/preview'
+    elif '/preview' in url:
+        return url.split('/preview')[0]+'/preview'
+    else:
+        return url
+
+
 @adm_required
 def cfit_admin(request):
     return render(request, 'cfit_admin/cfit_admin.html')
@@ -104,7 +113,8 @@ def cfit_admin_playlists_adicionar_aula_adicionar(request):
     playlists = Playlist.objects.all().values()
     try:
         nome = request.POST["nome_do_video"].upper()
-        link = request.POST["link_do_video"].split("view")[0]+"preview"
+        link = prepare_video_url(request.POST["link_do_video"])
+
         playlist_id = request.POST["select_id_da_playlist"]
         posicao = 0
         video = Video(nome=nome, link=link,
@@ -130,7 +140,7 @@ def cfit_admin_playlists_aulas_editar_salvar(request):
 
     video = Video.objects.get(id=request.POST["edit_video_id"])
     video.nome = request.POST["edit_video_nome"].upper()
-    video.link = request.POST["edit_video_link"].split("/view")[0]+"/preview"
+    video.link = prepare_video_url(request.POST["edit_video_link"])
     video.save()
     videos = Video.objects.filter(
         playlist_id=request.POST["edit_video_playlist_id"]).values()
@@ -171,7 +181,6 @@ def cfit_admin_ajustes(request):
 def cfit_admin_ajustes_salvar(request):
     config = Config.objects.get(id=1)
     config.index_banner = request.POST["index_banner"]
-    config.index_video = request.POST["index_video"].split(
-        "/view")[0]+"/preview"
+    config.index_video = prepare_video_url(request.POST["index_video"])
     config.save()
     return render(request, 'cfit_admin/ajustes.html', {"config": config, "msg": "<h4 class='alert alert-success'>SUCESSO</h4>"})
