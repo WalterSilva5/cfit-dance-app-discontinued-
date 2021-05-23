@@ -48,7 +48,7 @@ const WsiCadastro = {
     watch: {
         cadastro_nome(novo_nome, nome_anterior) {
             this.cadastro_nome = novo_nome.toUpperCase()
-            if (this.cadastro_nome.length < 6) {
+            if (this.cadastro_nome.length < 5) {
                 $("#cadastro_nome_erro").text(" *NOME DEVE TER NO MINIMO 5 LETRAS")
             } else {
                 $("#cadastro_nome_erro").text(" ")
@@ -56,7 +56,7 @@ const WsiCadastro = {
         },
         cadastro_usuario(novo_usuario, usuario_anterior) {
             this.cadastro_usuario = novo_usuario.toUpperCase().replace(/\s/g, '')
-            if (this.cadastro_usuario.length < 6) {
+            if (this.cadastro_usuario.length < 5) {
                 $("#cadastro_usuario_erro").text(" *LOGIN DEVE TER NO MINIMO 5 LETRAS")
             } else {
                 $("#cadastro_usuario_erro").text(" ")
@@ -70,7 +70,7 @@ const WsiCadastro = {
         cadastro_senha(nova_senha, senha_anterior) {
             this.cadastro_senha = nova_senha.replace(/\s/g, '')
             var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})/;
-            if (this.cadastro_senha.length < 6) {
+            if (this.cadastro_senha.length < 5) {
                 $("#cadastro_senha_erro").text("* A SENHA DEVE SER MAIOR")
             } else if (!regex.exec(this.cadastro_senha)) {
                 $("#cadastro_senha_erro").text(
@@ -117,7 +117,7 @@ const WsiCadastro = {
                     success: function (result) {
                         if (result == "cadastro_efetuado") {
                             $("#cadastro_alert_sucesso").show()
-                            $("#alert_cadastro").hide()
+                            $("#cadastro_alert_erro").hide()
                             $("#form_cadastro").trigger("reset")
                         } else if (result == "ja_cadastrado") {
                             erro_cadastro("USUARIO JÁ ESTÁ CADASTRADO!")
