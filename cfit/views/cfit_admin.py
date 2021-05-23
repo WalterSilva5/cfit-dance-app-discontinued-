@@ -12,7 +12,17 @@ def prepare_video_url(url):
     elif '/preview' in url:
         return url.split('/preview')[0]+'/preview'
     else:
-        return url
+        if "youtube" in url:
+            url = url.split("watch?v=")[1]
+            try:
+                url = "https://www.youtube.com/embed/"+url.split("&")[0]
+            except Exception:
+                pass
+            
+            else:
+                return url
+        else:
+            return url
 
 
 @adm_required
@@ -163,11 +173,13 @@ def cfit_admin_mensagens(request):
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
 
+
 @adm_required
 def cfit_admin_mensagens_excluir(request):
     Mensagem.objects.filter(id=request.GET["id"]).delete()
     mensagens = list(Mensagem.objects.all().values())
     return render(request, 'cfit_admin/mensagens.html', {"mensagens": mensagens})
+
 
 @adm_required
 def cfit_admin_ajustes(request):
@@ -177,6 +189,7 @@ def cfit_admin_ajustes(request):
         return render(request, 'cfit_admin/ajustes.html')
     else:
         return render(request, 'cfit_admin/ajustes.html', {"config": config})
+
 
 @adm_required
 def cfit_admin_ajustes_salvar(request):
